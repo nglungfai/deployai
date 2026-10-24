@@ -71,10 +71,114 @@
         inspection_slot: 'Thu 14:00',
         emergency_escalation: false
       }
+    },
+    law: {
+      title: 'Injury case intake · Hartwell & Reyes Law',
+      meta: 'Inbound call → Clio Grow · 0:49',
+      audio: 'assets/audio/call-law.mp3', marks: [0.35, 6.8, 11.3, 15.24, 17.02, 21.28, 24.34, 29.01, 30.92, 39.86, 41.73],
+      target: 'Clio Grow',
+      lines: [
+        ['agent', 'Hartwell & Reyes Injury Law. I can help get your case reviewed. Was anyone hurt, and when did this happen?'],
+        ['caller', "I was rear-ended on the freeway last month. My neck's been bad ever since."],
+        ['agent', "I'm sorry to hear that. Which state did the accident happen in?"],
+        ['caller', 'Texas. In Dallas.'],
+        ['agent', 'Thanks. Did you get medical treatment, and was a police report filed?'],
+        ['caller', 'Yes to both. I went to urgent care the next day.'],
+        ['agent', 'Got it. So we can check for conflicts, who was the other driver insured with?'],
+        ['caller', 'Lone Star Mutual.'],
+        ['agent', "Thank you. I can't give legal advice, but an attorney can review your case for free. I have Wednesday at 11:00 AM or Thursday at 3:00 PM."],
+        ['caller', 'Wednesday at 11:00.'],
+        ['agent', "You're booked for Wednesday at 11:00 AM with an attorney. You'll get a confirmation text and a short intake form."]
+      ],
+      payload: {
+        crm: 'clio_grow', matter_type: 'personal_injury · auto',
+        incident: { when: '~1 month ago', state: 'TX', city: 'Dallas', type: 'rear-end collision' },
+        injury: 'neck', medical_treatment: true, police_report: true,
+        conflict_check: { opposing_insurer: 'Lone Star Mutual', status: 'queued' },
+        limitations: { state: 'TX', years: 2, deadline_risk: false },
+        consult: { type: 'free_case_review', slot: 'Wed 11:00' },
+        no_legal_advice_disclosed: true
+      }
+    },
+    dental: {
+      title: 'New patient, same-day care · Brightline Family Dental',
+      meta: 'Inbound call → Open Dental · 0:42',
+      audio: 'assets/audio/call-dental.mp3', marks: [0.35, 5.02, 8.94, 14.2, 16.82, 23.21, 24.71, 27.33, 30.54, 32.84, 35.23],
+      target: 'Open Dental',
+      lines: [
+        ['agent', 'Brightline Family Dental, scheduling line. Are you a current patient with us?'],
+        ['caller', "No, I'm new. I have a bad toothache, and my cheek is a little swollen."],
+        ['agent', "I'm sorry. Swelling can be serious. Do you have a fever, or any trouble swallowing or breathing?"],
+        ['caller', 'No, just the swelling and the pain.'],
+        ['agent', 'Thanks. With swelling, we want to see you today. I have an emergency slot at 3:40 PM. Does that work?'],
+        ['caller', 'Yes, please.'],
+        ['agent', "Great. What's your full name and date of birth?"],
+        ['caller', 'Maria Lopez. March 4, 1988.'],
+        ['agent', 'And do you have dental insurance?'],
+        ['caller', 'Delta Dental, through my work.'],
+        ['agent', "Perfect. We'll verify it before you arrive. You're booked today at 3:40 PM, and I'm texting you the new-patient forms now."]
+      ],
+      payload: {
+        pms: 'open_dental', patient_status: 'new',
+        patient: { name: 'Maria L.', dob: '••••-03-04' },
+        reason: 'toothache + facial swelling',
+        triage: { swelling: true, fever: false, airway_risk: false, level: 'urgent_same_day' },
+        appointment: { type: 'emergency_exam', slot: 'today 15:40' },
+        insurance: { carrier: 'Delta Dental', verification: 'queued' },
+        forms_sent: 'sms'
+      }
+    },
+    auto: {
+      title: 'Brake repair + oil change · Northgate Auto Care',
+      meta: 'Inbound call → Tekmetric · 0:57',
+      audio: 'assets/audio/call-auto.mp3', marks: [0.35, 4.18, 8.86, 15.26, 16.89, 21.82, 23.72, 30.81, 33.93, 47.37, 49.09],
+      target: 'Tekmetric',
+      lines: [
+        ['agent', 'Northgate Auto Care, service desk. How can I help you today?'],
+        ['caller', 'Hi. My brakes started squealing this week, mostly when I come to a stop.'],
+        ['agent', 'I can get that looked at. I see this number on a 2019 Honda CR-V. Is that the car?'],
+        ['caller', "Yep, that's the one."],
+        ['agent', 'Does the brake pedal feel soft, or does the car pull to one side when you stop?'],
+        ['caller', "No, it's just the noise."],
+        ['agent', "Okay. That's usually worn pads. I can do a free brake inspection tomorrow at 8:00 AM or 1:00 PM."],
+        ['caller', "8:00 works. I'll drop it off on my way to work."],
+        ['agent', "You're set for 8:00. One more thing: your last oil change was about 6,200 miles ago, so it's due. Want us to do a synthetic oil change while the car is here? It's $69.99, and it won't add any time."],
+        ['caller', 'Sure, add that too.'],
+        ['agent', "Done. Brake inspection and oil change, tomorrow at 8:00 AM. We'll text you an estimate before we do any brake work."]
+      ],
+      payload: {
+        sms: 'tekmetric', customer: { phone: '+1214555••••', match: 'returning' },
+        vehicle: { year: 2019, make: 'Honda', model: 'CR-V', oil_change_due: true, miles_since: 6200 },
+        concern: 'brake squeal when stopping',
+        safety_screen: { soft_pedal: false, pulling: false, escalate: false },
+        repair_order: {
+          appointment: 'tomorrow 08:00', drop_off: true,
+          jobs: [
+            { job: 'brake_inspection', price: 0 },
+            { job: 'synthetic_oil_change', price: 69.99, source: 'agent_upsell' }
+          ]
+        },
+        estimate_approval: 'sms_before_brake_work'
+      }
     }
   };
 
   const GRAPHS = {
+    auto: {
+      inputs: [['Mileage', '6,200 mi since oil change'], ['Visit', 'Brake inspection booked'], ['Bay time', 'Fits the same slot']],
+      rule: ['Learned rule', 'Bundle due service'],
+      outputs: [['Offer', 'Oil change · $69.99'], ['Repair order', 'Added as second job']]
+    },
+    law: {
+      inputs: [['Case type', 'Auto injury'], ['State', 'Texas · 2-year limit'], ['Incident date', '22 months ago']],
+      rule: ['Learned rule', 'Deadline risk'],
+      outputs: [['Escalate', 'Same-day attorney callback'], ['CRM flag', 'Urgent in Clio']]
+    },
+    dental: {
+      inputs: [['Symptom', 'Facial swelling'], ['Red flags', 'No fever or airway issue'], ['Schedule', 'Emergency block open']],
+      rule: ['Learned rule', 'Urgent, not ER'],
+      outputs: [['Book', "Today's emergency slot"], ['Prep', 'Forms + insurance check']]
+    },
     restaurant: {
       inputs: [['Weather', 'Rain, 54°F'], ['Daypart', 'Friday 6–9 PM'], ['Order size', '8+ pizzas']],
       rule: ['Learned rule', 'Kitchen saturation'],
@@ -266,6 +370,7 @@
   /* ---------- ROI ---------- */
   function roiDefaults() {
     const d = VERTICALS[vertical];
+    if (!d) return;
     const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
     set('roi-calls', d.calls); set('roi-ticket', d.ticket); set('roi-conv', d.conv);
     $$('[data-roi-label="ticket"]').forEach((e) => (e.textContent = d.ticketLabel));
@@ -275,7 +380,7 @@
     if (tk) tk.step = vertical === 'roofing' ? 500 : 1;
   }
   function updateROI() {
-    const callsEl = document.getElementById('roi-calls'); if (!callsEl) return;
+    const callsEl = document.getElementById('roi-calls'); if (!callsEl || !VERTICALS[vertical]) return;
     const calls = +callsEl.value || 0;
     const ticket = Math.max(0, +document.getElementById('roi-ticket').value || 0);
     const conv = (+document.getElementById('roi-conv').value || 0) / 100;
@@ -302,7 +407,7 @@
 
   /* ---------- Vertical switching ---------- */
   function setVertical(v, opts = {}) {
-    if (!VERTICALS[v]) return;
+    if (!VERTICALS[v] && !CALLS[v] && !GRAPHS[v]) return;
     vertical = v;
     document.documentElement.dataset.vertical = v;
     $$('[data-vt]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.vt === v)));
@@ -405,6 +510,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     demo.el = $('[data-demo]');
     $$('[data-vt]').forEach((b) => b.addEventListener('click', () => setVertical(b.dataset.vt)));
+    $$('[data-demo-link]').forEach((a) => a.addEventListener('click', () => setVertical(a.dataset.demoLink)));
     const play = $('[data-demo-play]'); if (play) play.addEventListener('click', () => { if (!demo.voices.length) loadVoices(); startDemo(); });
     ['roi-calls', 'roi-ticket', 'roi-conv'].forEach((id) => { const el = document.getElementById(id); if (el) el.addEventListener('input', updateROI); });
     $$('[data-book]').forEach((f) => f.addEventListener('submit', (e) => {

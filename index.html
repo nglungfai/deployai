@@ -39,6 +39,8 @@
   <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
   <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v16M6 14l6 6 6-6"/></symbol>
   <symbol id="i-voicemail" viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="3.5"/><circle cx="17.5" cy="12" r="3.5"/><path d="M6.5 15.5h11"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v17M7 20h10M4 7h16M4 7l-2.5 6a2.5 2.5 0 0 0 5 0zM20 7l-2.5 6a2.5 2.5 0 0 0 5 0z"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5.2 5.2l-9.4 9.4a2.1 2.1 0 0 1-3-3l9.4-9.4a4 4 0 0 1-2.2-2.2zM14.7 6.3A4 4 0 0 1 19.5 3l-2.6 2.6.4 1.8 1.8.4L21 5.2a4 4 0 0 1-1.1 6.3"/></symbol><symbol id="i-tooth" viewBox="0 0 24 24"><path d="M7.5 3C5 3 3.5 5 3.5 7.5c0 3 1.5 4 2 7 .4 2.5 1 6.5 2.5 6.5s1.5-4 4-4 2.5 4 4 4 2.1-4 2.5-6.5c.5-3 2-4 2-7C20.5 5 19 3 16.5 3c-2 0-2.5 1-4.5 1s-2.5-1-4.5-1z"/></symbol>
 </svg>
 
 <div class="topbar"><div class="wrap">
@@ -121,7 +123,7 @@
       <div class="layer"><strong>DeployAI integration layer</strong><span>Workflows, business rules and your operational playbook</span></div>
       <svg class="ic arrow" aria-hidden="true"><use href="#i-down"/></svg>
       <p class="lbl">Your existing software</p>
-      <div class="row"><span class="tool">Toast</span><span class="tool">Clover</span><span class="tool">Square</span><span class="tool">HubSpot</span><span class="tool">Google Calendar</span><span class="tool">ServiceTitan</span><span class="tool">Jobber</span><span class="tool">AccuLynx</span></div>
+      <div class="row"><span class="tool">Toast</span><span class="tool">Clover</span><span class="tool">Square</span><span class="tool">HubSpot</span><span class="tool">Google Calendar</span><span class="tool">ServiceTitan</span><span class="tool">Jobber</span><span class="tool">AccuLynx</span><span class="tool">Clio</span><span class="tool">Open Dental</span><span class="tool">Tekmetric</span></div>
     </div>
     <div class="copy">
       <span class="pill">Who we are</span>
@@ -173,12 +175,12 @@
     <div class="center-head">
       <span class="pill">Core use cases</span>
       <h2>Proven deployments, starting with your digital front door.</h2>
-      <p>We streamline the main ways a business receives and processes customers: on the website, and on the phone.</p>
+      <p>One website agent that fits any business, plus voice agents tuned to the rules of each industry.</p>
     </div>
-    <div class="cases">
-      <article class="case hi">
+    <div class="cases-grid">
+      <article class="case hi case-web">
         <span class="tile"><svg class="ic"><use href="#i-chat"/></svg></span>
-        <span class="tag">Website · Fastest to deploy</span>
+        <span class="tag">Website · Any industry · Fastest to deploy</span>
         <h3>Website AI appointment &amp; intake agent</h3>
         <p class="prob">Static contact forms produce low-intent leads, and open calendar links let unqualified prospects fill your schedule.</p>
         <ul>
@@ -190,33 +192,45 @@
         <p class="tools">Botpress · HubSpot · Google Calendar</p>
         <a class="more" href="#book">Talk to the live agent</a>
       </article>
-      <article class="case">
-        <span class="tile"><svg class="ic"><use href="#i-home"/></svg></span>
-        <span class="tag">Voice · Roofing &amp; field services</span>
-        <h3>Voice lead qualification</h3>
-        <p class="prob">$15,000–50,000 jobs are lost when contractors are on ladders, on jobsites or buried in storm-season calls.</p>
-        <ul>
-          <li>Geofenced service-area check with Google Places</li>
-          <li>Damage and insurance qualification</li>
-          <li>Books directly on the estimator's calendar</li>
-          <li>Escalates active leaks to the owner</li>
-        </ul>
-        <p class="tools">ServiceTitan · Jobber · AccuLynx</p>
-        <a class="more" href="#demos">Hear a call</a>
-      </article>
-      <article class="case">
+      <article class="case ind">
         <span class="tile"><svg class="ic"><use href="#i-receipt"/></svg></span>
         <span class="tag">Voice · Restaurants</span>
-        <h3>Voice ordering &amp; POS automation</h3>
-        <p class="prob">Missed calls during the rush are lost revenue, and marketplace fees eat the margin on the orders that do come in.</p>
-        <ul>
-          <li>Orders injected into Toast, Clover or Square</li>
-          <li>Pay-at-counter fulfillment</li>
-          <li>Automatic marketplace markup rules</li>
-          <li>Failover call forwarding to staff</li>
-        </ul>
-        <p class="tools">Twilio · Toast · Clover · Square</p>
-        <a class="more" href="#demos">Hear a call</a>
+        <h3>Phone ordering into your POS</h3>
+        <p class="prob">Missed calls at the rush are lost tickets, and marketplace fees eat the margin on the rest.</p>
+        <ul><li>Orders injected into Toast, Clover or Square</li><li>Pay-at-counter, automatic markups</li><li>Failover forwarding to staff</li></ul>
+        <a class="more" href="#demos" data-demo-link="restaurant">Hear a call</a>
+      </article>
+      <article class="case ind">
+        <span class="tile"><svg class="ic"><use href="#i-home"/></svg></span>
+        <span class="tag">Voice · Roofing &amp; field services</span>
+        <h3>Storm-lead qualification</h3>
+        <p class="prob">$15,000–50,000 jobs are lost when crews are on ladders or buried in storm-season calls.</p>
+        <ul><li>Service-area check with Google Places</li><li>Damage and insurance qualification</li><li>Estimator booking, leak escalation</li></ul>
+        <a class="more" href="#demos" data-demo-link="roofing">Hear a call</a>
+      </article>
+      <article class="case ind">
+        <span class="tile"><svg class="ic"><use href="#i-scale"/></svg></span>
+        <span class="tag">Voice &amp; web · Law firms</span>
+        <h3>Case intake that never misses a lead</h3>
+        <p class="prob">Injury and family-law callers hire the first firm that answers, often after hours.</p>
+        <ul><li>Screens case type, jurisdiction and dates</li><li>Flags statute-of-limitations risk and runs conflict checks</li><li>Books free consults in Clio or MyCase, no legal advice given</li></ul>
+        <a class="more" href="#demos" data-demo-link="law">Hear a call</a>
+      </article>
+      <article class="case ind">
+        <span class="tile"><svg class="ic"><use href="#i-tooth"/></svg></span>
+        <span class="tag">Voice &amp; web · Dental practices</span>
+        <h3>Scheduling and triage for the front desk</h3>
+        <p class="prob">The front desk can't answer every ring while checking patients in, and new patients don't leave voicemails.</p>
+        <ul><li>New-patient booking into Open Dental, Dentrix or Eaglesoft</li><li>Triages pain and swelling into same-day slots</li><li>Collects insurance and texts intake forms</li></ul>
+        <a class="more" href="#demos" data-demo-link="dental">Hear a call</a>
+      </article>
+      <article class="case ind">
+        <span class="tile"><svg class="ic"><use href="#i-wrench"/></svg></span>
+        <span class="tag">Voice &amp; web · Auto repair shops</span>
+        <h3>A service desk that books and upsells</h3>
+        <p class="prob">Service writers miss calls while they're with customers at the counter, and due maintenance goes unmentioned.</p>
+        <ul><li>Looks up the vehicle and service history by caller ID</li><li>Screens safety symptoms before booking a bay</li><li>Offers due services and adds them to the repair order in Tekmetric or Shopmonkey</li></ul>
+        <a class="more" href="#demos" data-demo-link="auto">Hear a call</a>
       </article>
     </div>
   </div>
@@ -269,8 +283,11 @@
       <div class="panel-card">
         <header><h3>Voice agents</h3><p>Simulated calls recorded with neural AI voices, with the record each one creates.</p></header>
         <div class="vtabs" role="group" aria-label="Choose a demo call">
-          <button type="button" data-vt="restaurant" aria-pressed="true">Restaurant order</button>
-          <button type="button" data-vt="roofing" aria-pressed="false">Roofing intake</button>
+          <button type="button" data-vt="restaurant" aria-pressed="true">Restaurant</button>
+          <button type="button" data-vt="roofing" aria-pressed="false">Roofing</button>
+          <button type="button" data-vt="law" aria-pressed="false">Law firm</button>
+          <button type="button" data-vt="dental" aria-pressed="false">Dental</button>
+          <button type="button" data-vt="auto" aria-pressed="false">Auto shop</button>
         </div>
         <div class="demo" data-demo>
           <div class="demo-main">
@@ -302,22 +319,28 @@
       <div class="layer-card"><span class="tile"><svg class="ic"><use href="#i-chat"/></svg></span><h3>Frontend &amp; orchestration</h3><p>Web chat agents and voice lines your customers reach.</p><div class="row"><span>Botpress</span><span>Twilio</span><span>SIP trunking</span></div></div>
       <div class="layer-card"><span class="tile"><svg class="ic"><use href="#i-cpu"/></svg></span><h3>AI logic &amp; voice engine</h3><p>Reasoning, conversation and natural voices.</p><div class="row"><span>GPT-4o</span><span>Claude</span><span>Retell AI</span><span>Vapi</span><span>ElevenLabs</span></div></div>
       <div class="layer-card hi"><span class="tile"><svg class="ic"><use href="#i-graph"/></svg></span><h3>Domain knowledge layer</h3><p>Your rules and contextual decision trees, mapped as a knowledge graph.</p><div class="row"><span>Operational knowledge graph</span></div></div>
-      <div class="layer-card"><span class="tile"><svg class="ic"><use href="#i-layers"/></svg></span><h3>Platform integrations</h3><p>Results written into the systems you already run.</p><div class="row"><span>Toast</span><span>HubSpot</span><span>Google Calendar</span><span>Jobber</span><span>ServiceTitan</span></div></div>
+      <div class="layer-card"><span class="tile"><svg class="ic"><use href="#i-layers"/></svg></span><h3>Platform integrations</h3><p>Results written into the systems you already run.</p><div class="row"><span>Toast</span><span>HubSpot</span><span>Google Calendar</span><span>Jobber</span><span>ServiceTitan</span><span>Clio</span><span>Open Dental</span><span>Tekmetric</span></div></div>
     </div>
     <div class="kg-box">
       <div class="copy">
         <h3>Your operational playbook, encoded.</h3>
-        <p>Generic AI tools run on one flat prompt. We capture the rules your best people follow by instinct and model how conditions combine.</p>
+        <p>Generic AI tools run on one flat prompt. We capture the rules your best people follow by instinct, whether that's a kitchen manager, an estimator, an intake paralegal, a front-desk coordinator or a service writer, and model how conditions combine.</p>
         <q>"You are a helpful assistant. Take the customer's order."</q>
       </div>
       <div class="kg-panel">
         <div class="vtabs" role="group" aria-label="Choose a playbook example">
-          <button type="button" data-vt="restaurant" aria-pressed="true">Restaurant rule</button>
-          <button type="button" data-vt="roofing" aria-pressed="false">Roofing rule</button>
+          <button type="button" data-vt="restaurant" aria-pressed="true">Restaurant</button>
+          <button type="button" data-vt="roofing" aria-pressed="false">Roofing</button>
+          <button type="button" data-vt="law" aria-pressed="false">Law firm</button>
+          <button type="button" data-vt="dental" aria-pressed="false">Dental</button>
+          <button type="button" data-vt="auto" aria-pressed="false">Auto shop</button>
         </div>
         <div data-kg></div>
         <p class="kg-caption" data-vpanel="restaurant">On a rainy Friday, an order over 8 pizzas swamps the kitchen. The agent quotes a longer pickup time and offers drinks.</p>
         <p class="kg-caption" data-vpanel="roofing" hidden>3-tab shingles over 15 years old, in a zip code that just took hail, go to an insurance claim instead of a repair quote.</p>
+        <p class="kg-caption" data-vpanel="law" hidden>A Texas auto-injury caller whose accident was 22 months ago is close to the 2-year filing limit. The agent skips the next open consult and gets an attorney on the phone today.</p>
+        <p class="kg-caption" data-vpanel="dental" hidden>Swelling without fever or breathing trouble is urgent but not an ER case. The agent books today's emergency block and starts forms and insurance checks. Red flags send the caller to emergency care.</p>
+        <p class="kg-caption" data-vpanel="auto" hidden>A car already booked for brakes, 6,200 miles past its last oil change, gets the oil change offered on the same visit and added to the repair order. A soft pedal or pulling skips the upsell and goes straight to a service advisor.</p>
       </div>
     </div>
   </div>
@@ -356,7 +379,7 @@
 <footer>
   <div class="wrap top">
     <div class="about"><a class="logo" href="index.html" aria-label="DeployAI home"><svg class="logo-svg" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="-6.0 -82.0 422.9 106.0"><defs><clipPath id="Afheavyw"><path d="M0 0H52L0 52Z"/></clipPath><clipPath id="Bfheavyw"><path d="M55 0H200V200H0V55Z"/></clipPath></defs><g transform="translate(-3.02 -78.08) scale(1.3462)"><path fill-rule="evenodd" d="M8 6H32A26 26 0 0 1 32 58H8ZM21 19H32A13 13 0 0 1 32 45H21Z" fill="#8EA3C7" clip-path="url(#Afheavyw)"/><path fill-rule="evenodd" d="M8 6H32A26 26 0 0 1 32 58H8ZM21 19H32A13 13 0 0 1 32 45H21Z" fill="#FFFFFF" clip-path="url(#Bfheavyw)"/></g><path d="M97.025 1.0Q104.97500000000001 1.0 110.70000000000002 -2.125Q116.42500000000001 -5.25 120.05000000000001 -11.450000000000001L110.72500000000001 -15.225000000000001Q108.55000000000001 -11.525 105.25000000000001 -9.7Q101.95000000000002 -7.875 97.525 -7.875Q93.32500000000002 -7.875 90.38750000000002 -9.7Q87.45000000000002 -11.525 85.93750000000001 -14.9875Q84.42500000000001 -18.45 84.45000000000002 -23.375Q84.525 -28.400000000000002 86.03750000000001 -31.800000000000004Q87.55000000000001 -35.2 90.41250000000001 -36.975Q93.275 -38.75 97.4 -38.75Q100.82500000000002 -38.75 103.36250000000001 -37.25Q105.9 -35.75 107.3375 -33.075Q108.775 -30.400000000000002 108.775 -26.725Q108.775 -26.025000000000002 108.45 -24.987500000000004Q108.125 -23.950000000000003 107.75 -23.35L111.10000000000001 -27.950000000000003H79.95000000000002V-20.5H120.35000000000001Q120.4 -20.925 120.4375 -21.8Q120.47500000000001 -22.675 120.47500000000001 -23.525000000000002Q120.47500000000001 -30.875 117.76250000000002 -36.1375Q115.05000000000001 -41.400000000000006 109.92500000000001 -44.2Q104.80000000000001 -47.0 97.525 -47.0Q90.22500000000001 -47.0 84.8125 -44.0375Q79.4 -41.075 76.4375 -35.6875Q73.47500000000001 -30.3 73.47500000000001 -23.0Q73.47500000000001 -15.8 76.4 -10.412500000000001Q79.325 -5.025 84.65 -2.0125Q89.97500000000001 1.0 97.025 1.0Z" fill="#FFFFFF" transform="translate(10.68 0)"/><path d="M141.375 22.0V-46.0H130.5V22.0ZM179.5 -23.0Q179.5 -30.75 176.3875 -36.1375Q173.275 -41.525000000000006 168.2 -44.3875Q163.125 -47.25 157.075 -47.25Q151.25 -47.25 146.9 -44.2875Q142.55 -41.325 140.16250000000002 -35.9125Q137.775 -30.5 137.775 -23.0Q137.775 -15.600000000000001 140.16250000000002 -10.137500000000001Q142.55 -4.675 146.9 -1.7125Q151.25 1.25 157.075 1.25Q163.125 1.25 168.2 -1.6125000000000003Q173.275 -4.4750000000000005 176.3875 -9.912500000000001Q179.5 -15.350000000000001 179.5 -23.0ZM168.275 -23.0Q168.275 -18.400000000000002 166.3875 -15.175Q164.5 -11.950000000000001 161.375 -10.287500000000001Q158.25 -8.625 154.45 -8.625Q151.325 -8.625 148.3 -10.2625Q145.275 -11.9 143.325 -15.1125Q141.375 -18.325 141.375 -23.0Q141.375 -27.675 143.325 -30.887500000000003Q145.275 -34.1 148.3 -35.7375Q151.325 -37.375 154.45 -37.375Q158.25 -37.375 161.375 -35.712500000000006Q164.5 -34.050000000000004 166.3875 -30.837500000000002Q168.275 -27.625 168.275 -23.0Z" fill="#FFFFFF" transform="translate(10.68 0)"/><path d="M189.775 -78.0V0.0H200.65V-78.0Z" fill="#FFFFFF" transform="translate(10.68 0)"/><path d="M210.875 -23.0Q210.875 -15.975000000000001 214.1375 -10.537500000000001Q217.4 -5.1000000000000005 223.025 -2.0500000000000003Q228.65 1.0 235.675 1.0Q242.775 1.0 248.3625 -2.0500000000000003Q253.95 -5.1000000000000005 257.2125 -10.537500000000001Q260.475 -15.975000000000001 260.475 -23.0Q260.475 -30.125 257.2125 -35.525000000000006Q253.95 -40.925000000000004 248.3625 -43.97500000000001Q242.775 -47.025000000000006 235.675 -47.025000000000006Q228.65 -47.025000000000006 223.025 -43.97500000000001Q217.4 -40.925000000000004 214.1375 -35.525000000000006Q210.875 -30.125 210.875 -23.0ZM221.975 -23.0Q221.975 -27.3 223.7875 -30.5875Q225.6 -33.875 228.7 -35.7Q231.8 -37.525 235.675 -37.525Q239.55 -37.525 242.65 -35.7Q245.75 -33.875 247.5625 -30.5875Q249.375 -27.3 249.375 -23.0Q249.375 -18.7 247.5625 -15.45Q245.75 -12.200000000000001 242.65 -10.350000000000001Q239.55 -8.5 235.675 -8.5Q231.8 -8.5 228.7 -10.350000000000001Q225.6 -12.200000000000001 223.7875 -15.45Q221.975 -18.7 221.975 -23.0Z" fill="#FFFFFF" transform="translate(10.68 0)"/><path d="M310.02500000000003 -46.0H298.40000000000003L284.00000000000006 -9.925L289.1 -9.625L274.40000000000003 -46.0H262.02500000000003L280.55 -5.375L268.52500000000003 22.0H280.02500000000003Z" fill="#FFFFFF" transform="translate(10.68 0)"/><path d="M319.9 -18.0H356.9L354.65 -27.950000000000003H322.15ZM338.2 -50.2 349.35 -24.225 349.575 -21.3 359.075 0.0H372.45L338.2 -73.875L303.95 0.0H317.325L327.025 -21.925L327.2 -24.525000000000002Z" fill="#8EA3C7" transform="translate(10.68 0)"/><path d="M380.45000000000005 -70.0V0.0H392.45000000000005V-70.0Z" fill="#8EA3C7" transform="translate(10.68 0)"/></svg></a><p>The integration layer between breakthrough AI and your real-world business. 100% remote.</p></div>
-    <div><h4>Use cases</h4><ul><li><a href="#use-cases">Website AI agents</a></li><li><a href="#use-cases">Field services voice</a></li><li><a href="#use-cases">Restaurant voice ordering</a></li><li><a href="#platform-ai">Platform AI optimization</a></li></ul></div>
+    <div><h4>Use cases</h4><ul><li><a href="#use-cases">Website AI agents</a></li><li><a href="#use-cases">Field services voice</a></li><li><a href="#use-cases">Restaurant voice ordering</a></li><li><a href="#use-cases">Law firm intake</a></li><li><a href="#use-cases">Dental scheduling</a></li><li><a href="#use-cases">Auto shop service desk</a></li><li><a href="#platform-ai">Platform AI optimization</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="#approach">Approach</a></li><li><a href="#a2a">Agentic economy</a></li><li><a href="#technology">Technology</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
     <div><h4>Get started</h4><ul><li><a href="#book">Schedule a consultation</a></li><li><a href="#demos">Try the demos</a></li></ul></div>
   </div>

@@ -445,3 +445,15 @@ footer .logo .logo-svg{height:32px}
 .pc-price small{font-size:14px;color:var(--muted)}
 .pc-price .btn{justify-self:start}
 .pc-note{font-size:13px;color:var(--muted)}
+
+/* ---------- Use cases: website agent + industry grid ---------- */
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:1060px){.cases-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.cases-grid{grid-template-columns:1fr}}
+.case.ind{padding:26px 24px;gap:10px}
+.case.ind h3{font-size:20px}
+.case.ind .tile{width:48px;height:48px;border-radius:12px}
+.case.ind ul{padding-top:12px;gap:7px;font-size:14px}
+.more-ind{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.more-ind > div{display:grid;gap:10px;justify-items:start;max-width:70ch}
+.more-ind p{font-size:15.5px}
