@@ -2,29 +2,40 @@
 
 ## Logo
 
-The DeployAI logo is the **G3 single-slice D** built into the wordmark: a solid navy D cut by one 45° slice, with the top-left piece in steel. It stands for AI (steel) meeting the business (navy) at a clean seam, which is the integration DeployAI builds.
+The DeployAI logo is the **triangle D** built into the wordmark. A steel triangle is cut from the top-left of a navy D at 45°, and a matching 45° seam cuts a navy cap from the top of the steel "I". AI (steel) meets the business (navy) at a clean seam, at both ends of the name.
 
 | Use | File |
 |---|---|
 | Logo on light backgrounds | `brand/deployai-logo.svg` |
 | Logo on navy or dark backgrounds | `brand/deployai-logo-white.svg` |
-| Mark alone (tight spaces, avatars) | `brand/deployai-mark.svg`, `brand/deployai-mark-white.svg` |
-| App icon / favicon | `brand/deployai-appicon.svg`, PNGs at 16–512 px, `favicon.ico` |
+| One color | `brand/deployai-logo-mono-navy.svg`, `brand/deployai-logo-mono-white.svg` |
+| Logo at 110–160 px wide | `brand/deployai-logo-small.svg`, `brand/deployai-logo-small-white.svg` |
+| Mark alone (avatars, tight spaces) | `brand/deployai-mark.svg`, `brand/deployai-mark-white.svg`, `brand/deployai-mark-small.svg` |
+| App icon | `brand/deployai-appicon.svg` (above 64 px), `brand/deployai-appicon-small.svg` (64 px and below) |
+| Favicon | `favicon.ico` (16/32/48), `brand/deployai-appicon-*.png` |
 
 The name is always written **DeployAI**: capital D, capital AI.
 
+## Construction
+
+- Cap height 70 u. D stem 11.5 u, matched to Outfit Medium.
+- D: steel triangle with 36 u legs at 45°, extending into the counter. Seam gap 3.5 u.
+- "I": Outfit SemiBold, 45° seam starting 42 u above the baseline; navy cap ≈ 40% of the letter. Seam gap 3 u.
+- "eploy" in Outfit Medium with the "l" ascender trimmed to 74 u. "AI" in Outfit SemiBold, tightened 2 u.
+- All letters are outlined. Never retype the logo in a font.
+
 ## Clear space and minimum size
 
-- Keep clear space equal to the height of the steel piece on every side.
-- Logo: at least 110 px wide on screen, 30 mm in print.
-- Mark alone: at least 16 px.
+- Clear space on every side: half the cap height.
+- Full logo: at least 160 px wide on screen, 40 mm in print. Between 110 and 160 px, use the small-size version.
+- Mark alone: at least 16 px. App icons at 64 px and below use the small-size icon.
 
 ## Don't
 
-- Rotate, stretch or re-angle the slice.
-- Swap the steel and navy pieces.
-- Add gradients, shadows or outlines.
-- Set the wordmark in another font.
+- Change the 45° angle, the triangle size or the "I" cap.
+- Swap the steel and navy pieces, or use light blue/cyan.
+- Add gradients, shadows, outlines or effects.
+- Stretch, rotate or retype the wordmark.
 
 ## Colors
 
@@ -37,7 +48,7 @@ The name is always written **DeployAI**: capital D, capital AI.
 
 ## Type
 
-- Wordmark: Jost Medium, converted to outlines.
-- Headings: Jost.
+- Wordmark: Outfit Medium ("eploy") and SemiBold ("AI"), converted to outlines.
+- Headings: Outfit (replaces Jost).
 - Body: Figtree.
 - Data and code samples: Courier Prime.
