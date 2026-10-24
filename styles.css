@@ -64,7 +64,7 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);bac
 .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-block:80px 150px}
 @media (max-width:960px){.hero .wrap{grid-template-columns:1fr;padding-block:56px 120px}}
 .hero h1{font-size:clamp(38px,5vw,62px);margin-top:20px}
-.hero h1 .hl{background:linear-gradient(transparent 62%,var(--tint-2) 62%);padding-inline:2px}
+.hero h1 .hl{background:linear-gradient(135deg,var(--steel) 0 .3em,transparent .3em .36em,var(--navy) .36em);color:#fff;padding:.02em .22em .1em;margin-left:.04em;border-radius:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .hero .sub{margin-top:22px;font-size:18.5px;max-width:56ch}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
 

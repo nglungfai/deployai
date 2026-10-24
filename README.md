@@ -1,6 +1,6 @@
 # DeployAI
 
-Marketing website and brand assets for **DeployAI**, an AI and workflow systems integrator. DeployAI builds the integration layer between AI models, workflow automation and the software a business already runs.
+Marketing website and brand assets for **DeployAI**, your AI transformation team. DeployAI's forward-deployed engineers take AI transformation end to end, from workflow discovery to AI agents running in production inside the software a business already runs.
 
 **Live site:** https://nglungfai.github.io/deployai/
 
