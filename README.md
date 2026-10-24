@@ -1,0 +1,43 @@
+# DeployAI
+
+Marketing website and brand assets for **DeployAI**, an AI and workflow systems integrator. DeployAI builds the integration layer between AI models, workflow automation and the software a business already runs.
+
+**Live site:** https://nglungfai.github.io/deployai/
+
+## Repository layout
+
+```
+/                     Website (served by GitHub Pages from the repo root)
+├── index.html        Home page
+├── pricing.html      Pricing page
+├── styles.css        Site styles
+├── deployai.js       Interactive demos, ROI calculator, Botpress embed loader
+├── favicon.ico
+├── assets/           Logos, icons, social share image, demo call audio
+│   └── audio/
+├── brand/            Logo system: wordmark, mark, app icons, brand sheet (PDF/HTML)
+│   └── wordmark-options/
+└── docs/             Setup notes (Botpress, brand usage)
+```
+
+The site is plain HTML, CSS and JavaScript. There is no build step.
+
+## Preview locally
+
+```
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000.
+
+## Connecting the Botpress scheduling agent
+
+The booking section on the home page embeds a Botpress webchat. Until it is connected, a built-in preview of the same qualify-and-book flow runs. See [docs/botpress-setup.md](docs/botpress-setup.md).
+
+## Deploying
+
+GitHub Pages serves the `main` branch from `/ (root)`. Any commit to `main` redeploys the site within about a minute.
+
+## Brand
+
+The logo is the G3 "single slice" D, built into the DeployAI wordmark. Usage rules, colors and type are in [docs/brand-guidelines.md](docs/brand-guidelines.md) and [brand/DeployAI-Brand-Logo.pdf](brand/DeployAI-Brand-Logo.pdf).
