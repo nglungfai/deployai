@@ -16,7 +16,6 @@ Marketing website and brand assets for **DeployAI**, an AI and workflow systems 
 ├── assets/           Logos, icons, social share image, demo call audio
 │   └── audio/
 ├── brand/            Logo system: wordmark, mark, app icons, brand sheet (PDF/HTML)
-│   └── wordmark-options/
 └── docs/             Setup notes (Botpress, brand usage)
 ```
 
@@ -40,4 +39,4 @@ GitHub Pages serves the `main` branch from `/ (root)`. Any commit to `main` rede
 
 ## Brand
 
-The logo is the G3 "single slice" D, built into the DeployAI wordmark. Usage rules, colors and type are in [docs/brand-guidelines.md](docs/brand-guidelines.md) and [brand/DeployAI-Brand-Logo.pdf](brand/DeployAI-Brand-Logo.pdf).
+The logo is the triangle D built into the DeployAI wordmark (set in Outfit), with a matching 45° seam on the "I". Usage rules, colors and type are in [docs/brand-guidelines.md](docs/brand-guidelines.md) and [brand/DeployAI-Brand-Logo.pdf](brand/DeployAI-Brand-Logo.pdf).
