@@ -1,6 +1,6 @@
 # DeployAI
 
-Marketing website and brand assets for **DeployAI**, your AI transformation team. DeployAI's forward-deployed engineers take AI transformation end to end, from workflow discovery to AI agents running in production inside the software a business already runs.
+Marketing website and brand assets for **DeployAI**: AI and automation for the trades, set up and managed for you. DeployAI finds where trade businesses lose leads and time, builds the fix with AI and the software they already run, and keeps it running.
 
 **Live site:** https://nglungfai.github.io/deployai/
 
