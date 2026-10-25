@@ -9,9 +9,8 @@ Marketing website and brand assets for **DeployAI**, your AI transformation team
 ```
 /                     Website (served by GitHub Pages from the repo root)
 ├── index.html        Home page
-├── pricing.html      Pricing page
 ├── styles.css        Site styles
-├── deployai.js       Interactive demos, ROI calculator, Botpress embed loader
+├── deployai.js       Interactive demos, knowledge-graph examples, Botpress embed loader
 ├── favicon.ico
 ├── assets/           Logos, icons, social share image, demo call audio
 │   └── audio/

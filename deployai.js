@@ -1,4 +1,4 @@
-/* DeployAI shared behaviour: vertical toggle, call demo player, knowledge graph, ROI calculator, booking form.
+/* DeployAI shared behaviour: vertical toggle, call demo player, knowledge graph, booking agent.
    Works off data-attributes so every design variant can style its own markup. */
 (function () {
   const $ = (s, r = document) => r.querySelector(s);
@@ -7,12 +7,6 @@
   const money = (n) => '$' + Math.round(n).toLocaleString('en-US');
 
   /* ---------- Data ---------- */
-  const VERTICALS = {
-    restaurant: { retainer: 499, ticket: 40, conv: 100, calls: 3, ticketLabel: 'Average takeout order', convLabel: 'Missed calls that become orders' },
-    roofing: { retainer: 799, ticket: 15000, conv: 10, calls: 3, ticketLabel: 'Average roofing job', convLabel: 'Leads that close' },
-    website: { retainer: 299, ticket: 1200, conv: 20, calls: 5, ticketLabel: 'Average customer value', convLabel: 'Qualified leads that become customers', callsLabel: 'Extra qualified leads per week' }
-  };
-
   const CALLS = {
     restaurant: {
       title: "Friday rush · Marino's Pizza",
@@ -100,34 +94,6 @@
         no_legal_advice_disclosed: true
       }
     },
-    dental: {
-      title: 'New patient, same-day care · Brightline Family Dental',
-      meta: 'Inbound call → Open Dental · 0:42',
-      audio: 'assets/audio/call-dental.mp3', marks: [0.35, 5.02, 8.94, 14.2, 16.82, 23.21, 24.71, 27.33, 30.54, 32.84, 35.23],
-      target: 'Open Dental',
-      lines: [
-        ['agent', 'Brightline Family Dental, scheduling line. Are you a current patient with us?'],
-        ['caller', "No, I'm new. I have a bad toothache, and my cheek is a little swollen."],
-        ['agent', "I'm sorry. Swelling can be serious. Do you have a fever, or any trouble swallowing or breathing?"],
-        ['caller', 'No, just the swelling and the pain.'],
-        ['agent', 'Thanks. With swelling, we want to see you today. I have an emergency slot at 3:40 PM. Does that work?'],
-        ['caller', 'Yes, please.'],
-        ['agent', "Great. What's your full name and date of birth?"],
-        ['caller', 'Maria Lopez. March 4, 1988.'],
-        ['agent', 'And do you have dental insurance?'],
-        ['caller', 'Delta Dental, through my work.'],
-        ['agent', "Perfect. We'll verify it before you arrive. You're booked today at 3:40 PM, and I'm texting you the new-patient forms now."]
-      ],
-      payload: {
-        pms: 'open_dental', patient_status: 'new',
-        patient: { name: 'Maria L.', dob: '••••-03-04' },
-        reason: 'toothache + facial swelling',
-        triage: { swelling: true, fever: false, airway_risk: false, level: 'urgent_same_day' },
-        appointment: { type: 'emergency_exam', slot: 'today 15:40' },
-        insurance: { carrier: 'Delta Dental', verification: 'queued' },
-        forms_sent: 'sms'
-      }
-    },
     auto: {
       title: 'Brake repair + oil change · Northgate Auto Care',
       meta: 'Inbound call → Tekmetric · 0:57',
@@ -173,11 +139,6 @@
       inputs: [['Case type', 'Auto injury'], ['State', 'Texas · 2-year limit'], ['Incident date', '22 months ago']],
       rule: ['Learned rule', 'Deadline risk'],
       outputs: [['Escalate', 'Same-day attorney callback'], ['CRM flag', 'Urgent in Clio']]
-    },
-    dental: {
-      inputs: [['Symptom', 'Facial swelling'], ['Red flags', 'No fever or airway issue'], ['Schedule', 'Emergency block open']],
-      rule: ['Learned rule', 'Urgent, not ER'],
-      outputs: [['Book', "Today's emergency slot"], ['Prep', 'Forms + insurance check']]
     },
     restaurant: {
       inputs: [['Weather', 'Rain, 54°F'], ['Daypart', 'Friday 6–9 PM'], ['Order size', '8+ pizzas']],
@@ -367,47 +328,9 @@
     playLine(0, demo.token);
   }
 
-  /* ---------- ROI ---------- */
-  function roiDefaults() {
-    const d = VERTICALS[vertical];
-    if (!d) return;
-    const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
-    set('roi-calls', d.calls); set('roi-ticket', d.ticket); set('roi-conv', d.conv);
-    $$('[data-roi-label="ticket"]').forEach((e) => (e.textContent = d.ticketLabel));
-    $$('[data-roi-label="conv"]').forEach((e) => (e.textContent = d.convLabel));
-    $$('[data-roi-label="calls"]').forEach((e) => (e.textContent = d.callsLabel || 'Missed calls recovered per week'));
-    const tk = document.getElementById('roi-ticket');
-    if (tk) tk.step = vertical === 'roofing' ? 500 : 1;
-  }
-  function updateROI() {
-    const callsEl = document.getElementById('roi-calls'); if (!callsEl || !VERTICALS[vertical]) return;
-    const calls = +callsEl.value || 0;
-    const ticket = Math.max(0, +document.getElementById('roi-ticket').value || 0);
-    const conv = (+document.getElementById('roi-conv').value || 0) / 100;
-    const retainer = VERTICALS[vertical].retainer;
-    const recovered = calls * 4.33 * conv * ticket;
-    const perCall = 4.33 * conv * ticket;
-    const breakeven = perCall > 0 ? retainer / perCall : Infinity;
-    const out = {
-      'calls-out': calls + (vertical === 'website' ? (calls === 1 ? ' lead' : ' leads') : (calls === 1 ? ' call' : ' calls')),
-      'conv-out': Math.round(conv * 100) + '%',
-      recovered: money(recovered),
-      retainer: money(retainer),
-      net: (recovered - retainer < 0 ? '−' : '') + money(Math.abs(recovered - retainer)),
-      multiple: retainer ? (recovered / retainer).toFixed(recovered / retainer >= 10 ? 0 : 1) + '×' : '–',
-      breakeven: isFinite(breakeven) ? (breakeven < 1 ? 'Under 1' + (vertical === 'website' ? ' lead' : ' call') : Math.ceil(breakeven) + (vertical === 'website' ? ' leads' : ' calls')) + ' / week' : '–'
-    };
-    Object.entries(out).forEach(([k, v]) => $$(`[data-roi="${k}"]`).forEach((e) => (e.textContent = v)));
-    const pos = recovered >= retainer;
-    $$('[data-roi-state]').forEach((e) => (e.dataset.roiState = pos ? 'positive' : 'negative'));
-    const bar = $$('[data-roi-bar]');
-    const max = Math.max(recovered, retainer) || 1;
-    bar.forEach((b) => b.style.setProperty('--w', ((b.dataset.roiBar === 'recovered' ? recovered : retainer) / max).toFixed(3)));
-  }
-
   /* ---------- Vertical switching ---------- */
   function setVertical(v, opts = {}) {
-    if (!VERTICALS[v] && !CALLS[v] && !GRAPHS[v]) return;
+    if (!CALLS[v] && !GRAPHS[v]) return;
     vertical = v;
     document.documentElement.dataset.vertical = v;
     $$('[data-vt]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.vt === v)));
@@ -415,8 +338,6 @@
     if (demo.playing) stopDemo(false);
     demo.el && demo.el.classList.remove('is-done');
     renderKG(); renderDemo();
-    if (!opts.keepRoi) roiDefaults();
-    updateROI();
   }
 
 
@@ -450,7 +371,7 @@
       { key: 'goal', bot: "Hi, I'm DeployAI's scheduling assistant. What would you like to automate first?", opts: ['Website inquiries', 'Phone calls', 'Back-office workflows'] },
       { key: 'industry', bot: 'Got it. What kind of business are you?', opts: ['Home or field services', 'Restaurant', 'Professional services', 'Other'] },
       { key: 'volume', bot: 'Roughly how many inquiries or calls do you get in a week?', opts: ['Under 25', '25 to 100', 'More than 100'] },
-      { key: 'slot', bot: 'Thanks, that fits a deployment consultation. Here are open 15-minute slots (Pacific):', opts: ['Tue 10:00 AM', 'Tue 2:30 PM', 'Wed 11:00 AM'] },
+      { key: 'slot', bot: 'Thanks, that fits a consultation. Here are open 15-minute slots (Pacific):', opts: ['Tue 10:00 AM', 'Tue 2:30 PM', 'Wed 11:00 AM'] },
       { key: 'email', bot: 'Great. What email should the calendar invite go to?', input: true }
     ];
     let i = 0;
@@ -470,7 +391,7 @@
     function showInput() { opts.hidden = true; if (form) { form.hidden = false; input.value = ''; } }
     function renderRecord(done) {
       if (!rec) return;
-      const r = { source: 'website_agent', channel: 'web_chat', intent: state.goal || null, industry: state.industry || null, weekly_volume: state.volume || null, qualified: !!state.volume, contact: state.email || null, meeting: done ? { type: 'deployment_consultation', slot: state.slot, tz: 'America/Los_Angeles' } : null, synced_to: done ? ['google_calendar', 'hubspot'] : [] };
+      const r = { source: 'website_agent', channel: 'web_chat', intent: state.goal || null, industry: state.industry || null, weekly_volume: state.volume || null, qualified: !!state.volume, contact: state.email || null, meeting: done ? { type: 'consultation', slot: state.slot, tz: 'America/Los_Angeles' } : null, synced_to: done ? ['google_calendar', 'hubspot'] : [] };
       rec.textContent = JSON.stringify(r, null, 2);
     }
     function step() {
@@ -512,7 +433,6 @@
     $$('[data-vt]').forEach((b) => b.addEventListener('click', () => setVertical(b.dataset.vt)));
     $$('[data-demo-link]').forEach((a) => a.addEventListener('click', () => setVertical(a.dataset.demoLink)));
     const play = $('[data-demo-play]'); if (play) play.addEventListener('click', () => { if (!demo.voices.length) loadVoices(); startDemo(); });
-    ['roi-calls', 'roi-ticket', 'roi-conv'].forEach((id) => { const el = document.getElementById(id); if (el) el.addEventListener('input', updateROI); });
     $$('[data-book]').forEach((f) => f.addEventListener('submit', (e) => {
       e.preventDefault();
       const msg = $('[data-book-msg]', f);
