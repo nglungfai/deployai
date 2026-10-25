@@ -451,7 +451,7 @@ footer .logo .logo-svg{height:28px}
 .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media (max-width:1060px){.cases-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.cases-grid{grid-template-columns:1fr}}
-@media (min-width:641px){.case-web{grid-column:span 2}}
+@media (min-width:641px){.cases-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .case.ind{padding:26px 24px;gap:10px}
 .case.ind h3{font-size:20px}
 .case.ind .tile{width:48px;height:48px;border-radius:12px}

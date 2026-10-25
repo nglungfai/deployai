@@ -8,34 +8,6 @@
 
   /* ---------- Data ---------- */
   const CALLS = {
-    restaurant: {
-      title: "Friday rush · Marino's Pizza",
-      meta: 'Inbound call → Toast POS · 0:37',
-      audio: 'assets/audio/call-restaurant.mp3', marks: [0.35, 5.26, 8.85, 14.76, 16.36, 25.23, 29.51],
-      target: 'Toast POS',
-      lines: [
-        ['agent', "Thanks for calling Marino's on Fifth. Is this for pickup or delivery tonight?"],
-        ['caller', 'Pickup. Two large pepperonis and a medium veggie.'],
-        ['agent', 'Two large pepperoni and one medium veggie. Want to add garlic knots for $6.99?'],
-        ['caller', 'Sure, one order.'],
-        ['agent', "It's a rainy Friday and the kitchen is slammed, so pickup is at 7:25 PM, about 40 minutes. Can I get a name and callback number?"],
-        ['caller', 'Dana. 503-555-0142.'],
-        ['agent', "Thanks, Dana. That's $59.96 before tax, and you'll pay at the counter. See you at 7:25 PM."]
-      ],
-      payload: {
-        channel: 'ai_voice', pos: 'toast', order_type: 'pickup',
-        customer: { name: 'Dana', phone: '+1503555••••' },
-        items: [
-          { sku: 'PZ-L-PEP', qty: 2, price: 18.99 },
-          { sku: 'PZ-M-VEG', qty: 1, price: 14.99 },
-          { sku: 'SD-KNOTS', qty: 1, price: 6.99 }
-        ],
-        subtotal: 59.96, tax_included: false,
-        payment: 'pay_at_counter',
-        promised_at: '19:25',
-        kg_rules: ['friday_peak + rain → lead_time +15 min', 'upsell: sides']
-      }
-    },
     roofing: {
       title: 'Post-storm intake · Summit Ridge Roofing',
       meta: 'Inbound call → ServiceTitan · 0:57',
@@ -66,32 +38,34 @@
         emergency_escalation: false
       }
     },
-    law: {
-      title: 'Injury case intake · Hartwell & Reyes Law',
-      meta: 'Inbound call → Clio Grow · 0:49',
-      audio: 'assets/audio/call-law.mp3', marks: [0.35, 6.8, 11.3, 15.24, 17.02, 21.28, 24.34, 29.01, 30.92, 39.86, 41.73],
-      target: 'Clio Grow',
+    plumbing: {
+      title: 'Leaking water heater · Brightwater Plumbing',
+      meta: 'After-hours call → Jobber · 1:01',
+      audio: 'assets/audio/call-plumbing.mp3', marks: [0.35, 5.49, 10.12, 19.0, 21.76, 26.07, 29.72, 43.99, 45.81, 48.28, 52.7],
+      target: 'Jobber',
       lines: [
-        ['agent', 'Hartwell & Reyes Injury Law. I can help get your case reviewed. Was anyone hurt, and when did this happen?'],
-        ['caller', "I was rear-ended on the freeway last month. My neck's been bad ever since."],
-        ['agent', "I'm sorry to hear that. Which state did the accident happen in?"],
-        ['caller', 'Texas. In Dallas.'],
-        ['agent', 'Thanks. Did you get medical treatment, and was a police report filed?'],
-        ['caller', 'Yes to both. I went to urgent care the next day.'],
-        ['agent', 'Got it. So we can check for conflicts, who was the other driver insured with?'],
-        ['caller', 'Lone Star Mutual.'],
-        ['agent', "Thank you. I can't give legal advice, but an attorney can review your case for free. I have Wednesday at 11:00 AM or Thursday at 3:00 PM."],
-        ['caller', 'Wednesday at 11:00.'],
-        ['agent', "You're booked for Wednesday at 11:00 AM with an attorney. You'll get a confirmation text and a short intake form."]
+        ['agent', 'Brightwater Plumbing, after-hours line. Is water leaking or spreading right now?'],
+        ['caller', "Yeah, my water heater's leaking. There's a puddle all over the garage."],
+        ['agent', "Let's stop the water first. On top of the heater, find the valve on the cold-water pipe and turn it clockwise until it stops. Can you do that now?"],
+        ['caller', "Okay... done. It's slowing down."],
+        ['agent', 'Good. Is the heater gas or electric, and roughly how old is it?'],
+        ['caller', 'Gas. It came with the house, so maybe twelve years.'],
+        ['agent', 'At twelve years with a leaking tank, replacing it usually makes more sense than a repair. With the water off, it can safely wait until morning, so you avoid the emergency rate. I have Sunday at 8 AM. Does that work?'],
+        ['caller', 'Yes, eight works.'],
+        ['agent', 'Great. Can I get your name and address?'],
+        ['caller', 'Mark Ellis, 2207 Cedar Bend Road.'],
+        ['agent', "You're booked for Sunday at 8 AM, Mark. Our tech will bring replacement options and give you a price on site. I'm texting your confirmation now."]
       ],
       payload: {
-        crm: 'clio_grow', matter_type: 'personal_injury · auto',
-        incident: { when: '~1 month ago', state: 'TX', city: 'Dallas', type: 'rear-end collision' },
-        injury: 'neck', medical_treatment: true, police_report: true,
-        conflict_check: { opposing_insurer: 'Lone Star Mutual', status: 'queued' },
-        limitations: { state: 'TX', years: 2, deadline_risk: false },
-        consult: { type: 'free_case_review', slot: 'Wed 11:00' },
-        no_legal_advice_disclosed: true
+        fsm: 'jobber', job_type: 'water_heater_replacement_estimate',
+        customer: { name: 'Mark E.', phone: '+1214555••••' },
+        address: { line1: '2207 Cedar Bend Rd', verified: true },
+        issue: 'tank leak',
+        triage: { active_leak: true, shutoff_done: true, gas_smell: false, emergency_dispatch: false },
+        equipment: { type: 'gas water heater', age_years: 12 },
+        recommendation: 'replace',
+        visit_slot: 'Sun 08:00',
+        kg_rules: ['leak + shutoff confirmed → next-morning slot', 'tank age ≥ 10 + leak → replacement quote']
       }
     },
     auto: {
@@ -135,15 +109,10 @@
       rule: ['Learned rule', 'Bundle due service'],
       outputs: [['Offer', 'Oil change · $69.99'], ['Repair order', 'Added as second job']]
     },
-    law: {
-      inputs: [['Case type', 'Auto injury'], ['State', 'Texas · 2-year limit'], ['Incident date', '22 months ago']],
-      rule: ['Learned rule', 'Deadline risk'],
-      outputs: [['Escalate', 'Same-day attorney callback'], ['CRM flag', 'Urgent in Clio']]
-    },
-    restaurant: {
-      inputs: [['Weather', 'Rain, 54°F'], ['Daypart', 'Friday 6–9 PM'], ['Order size', '8+ pizzas']],
-      rule: ['Learned rule', 'Kitchen saturation'],
-      outputs: [['Quoted lead time', '+15 to +25 min'], ['Upsell trigger', 'Drinks on large orders']]
+    plumbing: {
+      inputs: [['Leak', 'Tank, water spreading'], ['Shutoff', 'Closed during the call'], ['Heater', 'Gas, 12 years old']],
+      rule: ['Learned rule', 'Shutoff first'],
+      outputs: [['Schedule', 'Next morning, not tonight'], ['Quote', 'Replacement, not repair']]
     },
     roofing: {
       inputs: [['Material', '3-tab shingle'], ['Roof age', '15+ years'], ['Storm event', 'Hail in zip, 90 days']],
@@ -152,7 +121,7 @@
     }
   };
 
-  let vertical = 'restaurant';
+  let vertical = 'roofing';
 
   /* ---------- Knowledge graph SVG ---------- */
   function esc(s) { return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
@@ -369,7 +338,7 @@
     const state = {};
     const STEPS = [
       { key: 'goal', bot: "Hi, I'm DeployAI's scheduling assistant. What would you like to automate first?", opts: ['Website inquiries', 'Phone calls', 'Back-office workflows'] },
-      { key: 'industry', bot: 'Got it. What kind of business are you?', opts: ['Home or field services', 'Restaurant', 'Professional services', 'Other'] },
+      { key: 'industry', bot: 'Got it. What kind of business are you?', opts: ['Roofing', 'Plumbing or HVAC', 'Auto repair', 'Another trade'] },
       { key: 'volume', bot: 'Roughly how many inquiries or calls do you get in a week?', opts: ['Under 25', '25 to 100', 'More than 100'] },
       { key: 'slot', bot: 'Thanks, that fits a consultation. Here are open 15-minute slots (Pacific):', opts: ['Tue 10:00 AM', 'Tue 2:30 PM', 'Wed 11:00 AM'] },
       { key: 'email', bot: 'Great. What email should the calendar invite go to?', input: true }
@@ -439,7 +408,7 @@
       if (msg) msg.textContent = 'Preview only: this form is not connected yet. Before launch, point it at Calendly, Cal.com or Formspree.';
     }));
     const first = $('[data-vt]');
-    setVertical(first ? first.dataset.vt : 'restaurant');
+    setVertical(first ? first.dataset.vt : 'roofing');
     initChat();
   });
 })();
