@@ -103,6 +103,66 @@
     }
   };
 
+  /* Spanish versions of each call: same rules, same record (field values stay in English, language noted). */
+  const CALLS_ES = {
+    roofing: {
+      title: "Post-storm intake in Spanish · Summit Ridge Roofing",
+      meta: "Inbound call → ServiceTitan · 0:59",
+      audio: 'assets/audio/call-roofing-es.mp3', marks: [0.35, 6.3, 12.07, 16.01, 19.17, 27.5, 31.42, 39.32, 40.71, 50.48, 52.51],
+      lines: [
+        ["agent", "Summit Ridge Roofing, línea de atención. Primero, ¿está entrando agua a la casa en este momento?"],
+        ["caller", "No, adentro no. Pero cayó granizo el martes y mi vecino dice que el techo se ve muy dañado."],
+        ["agent", "Vamos a mandar a alguien. ¿Cuál es la dirección de la propiedad?"],
+        ["caller", "1418 Larkspur Drive, en Plano."],
+        ["agent", "Perfecto, esa dirección está dentro de nuestra zona de servicio. ¿Sabe qué tipo de tejas tiene y más o menos cuántos años tiene el techo?"],
+        ["caller", "Las tejas planas de asfalto. Tiene como 17 años."],
+        ["agent", "Con tejas de asfalto de 17 años y el granizo del martes, normalmente califica para un reclamo al seguro. ¿Ya lo presentó?"],
+        ["caller", "Todavía no."],
+        ["agent", "No hay problema. Tengo el jueves a las 10:00 de la mañana o a las 2:00 de la tarde para una inspección gratis. Nuestro estimador va a documentar los daños para su ajustador."],
+        ["caller", "A las 2:00 me queda bien."],
+        ["agent", "Listo, quedó agendado para el jueves a las 2:00 de la tarde. Le acabo de enviar la confirmación por mensaje de texto."]
+      ]
+    },
+    plumbing: {
+      title: "Leaking water heater in Spanish · Brightwater Plumbing",
+      meta: "After-hours call → Jobber · 1:06",
+      audio: 'assets/audio/call-plumbing-es.mp3', marks: [0.35, 6.39, 11.11, 20.37, 22.72, 27.82, 31.4, 45.91, 48.05, 50.84, 54.54],
+      lines: [
+        ["agent", "Brightwater Plumbing, línea fuera de horario. ¿Hay una fuga de agua o se está regando en este momento?"],
+        ["caller", "Sí, el calentador de agua está goteando. Hay un charco en todo el garaje."],
+        ["agent", "Primero vamos a cerrar el agua. Arriba del calentador, busque la llave del tubo de agua fría y gírela a la derecha hasta que ya no dé más. ¿Puede hacerlo ahorita?"],
+        ["caller", "A ver... listo. Ya está bajando."],
+        ["agent", "Muy bien. ¿El calentador es de gas o eléctrico, y más o menos cuántos años tiene?"],
+        ["caller", "De gas. Venía con la casa, así que como 12 años."],
+        ["agent", "Con 12 años y el tanque goteando, normalmente conviene más reemplazarlo que repararlo. Con el agua cerrada, puede esperar hasta mañana sin peligro, y así se ahorra la tarifa de emergencia. Tengo el domingo a las 8:00 de la mañana. ¿Le funciona?"],
+        ["caller", "Sí, a las 8:00 está bien."],
+        ["agent", "Perfecto. ¿Me da su nombre y su dirección?"],
+        ["caller", "Marco Elizondo, 2207 Cedar Bend Road."],
+        ["agent", "Listo, Marco, quedó agendado para el domingo a las 8:00 de la mañana. El técnico va a llevar opciones de reemplazo y le da el precio ahí mismo. Le estoy enviando la confirmación por mensaje de texto."]
+      ],
+      payload: {"customer": {"name": "Marco E.", "phone": "+1214555••••"}}
+    },
+    auto: {
+      title: "Brake repair + oil change in Spanish · Northgate Auto Care",
+      meta: "Inbound call → Tekmetric · 1:03",
+      audio: 'assets/audio/call-auto-es.mp3', marks: [0.35, 4.6, 9.44, 15.52, 16.91, 21.91, 24.04, 33.17, 36.12, 51.63, 53.79],
+      lines: [
+        ["agent", "Northgate Auto Care, mostrador de servicio. ¿En qué le puedo ayudar?"],
+        ["caller", "Hola. Esta semana los frenos empezaron a rechinar, sobre todo cuando me paro."],
+        ["agent", "Con gusto lo revisamos. Veo este número con una Honda CR-V 2019. ¿Es ese el carro?"],
+        ["caller", "Sí, esa es."],
+        ["agent", "¿El pedal del freno se siente suave, o el carro se jala hacia un lado cuando frena?"],
+        ["caller", "No, nada más es el ruido."],
+        ["agent", "Bueno. Eso normalmente son las pastillas gastadas. Le puedo hacer una inspección de frenos gratis mañana a las 8:00 de la mañana o a la 1:00 de la tarde."],
+        ["caller", "A las 8:00. Lo dejo de camino al trabajo."],
+        ["agent", "Quedó para las 8:00. Una cosa más: su último cambio de aceite fue hace como 6,200 millas, así que ya le toca. ¿Quiere que le hagamos un cambio de aceite sintético mientras el carro está aquí? Cuesta $69.99 y no le agrega tiempo."],
+        ["caller", "Claro, agréguelo también."],
+        ["agent", "Listo. Inspección de frenos y cambio de aceite, mañana a las 8:00 de la mañana. Le mandamos un presupuesto por mensaje antes de hacer cualquier trabajo en los frenos."]
+      ]
+    }
+  };
+  Object.keys(CALLS_ES).forEach((k) => { if (CALLS[k]) CALLS[k].es = CALLS_ES[k]; });
+
   const GRAPHS = {
     auto: {
       inputs: [['Mileage', '6,200 mi since oil change'], ['Visit', 'Brake inspection booked'], ['Bay time', 'Fits the same slot']],
@@ -161,17 +221,22 @@
   }
 
   /* ---------- Demo player ---------- */
-  const demo = { el: null, idx: -1, playing: false, token: 0, start: 0, timer: null, clock: null, voices: [] };
+  const demo = { el: null, idx: -1, playing: false, token: 0, start: 0, timer: null, clock: null, voices: [], lang: 'en' };
+  function cur() {
+    const c = CALLS[vertical];
+    if (!c || demo.lang !== 'es' || !c.es) return c;
+    return Object.assign({}, c, c.es, { payload: Object.assign({ language: 'es' }, c.payload, c.es.payload || {}) });
+  }
 
   function loadVoices() {
     if (!('speechSynthesis' in window)) return;
-    const v = speechSynthesis.getVoices().filter((x) => /^en(-|_)/i.test(x.lang));
+    const v = speechSynthesis.getVoices().filter((x) => /^(en|es)(-|_)/i.test(x.lang));
     demo.voices = v;
   }
   if ('speechSynthesis' in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
 
   function pickVoice(role) {
-    const v = demo.voices;
+    const v = demo.voices.filter((x) => x.lang.toLowerCase().startsWith(demo.lang));
     if (!v.length) return null;
     const pref = role === 'agent'
       ? [/Samantha/i, /Google US English/i, /Aria/i, /Jenny/i, /female/i]
@@ -182,7 +247,7 @@
 
   function renderDemo() {
     const el = demo.el; if (!el) return;
-    const c = CALLS[vertical];
+    const c = cur();
     if (!c) return;
     const t = $('[data-demo-title]', el); if (t) t.textContent = c.title;
     const m = $('[data-demo-meta]', el); if (m) m.textContent = c.meta;
@@ -224,14 +289,14 @@
     setLabel(done ? 'Replay call' : 'Play call');
     if (done) {
       setProgress(1);
-      setStatus(`Injected into ${CALLS[vertical].target} · 200 OK`);
+      setStatus(`Injected into ${cur().target} · 200 OK`);
       demo.el && demo.el.classList.add('is-done');
     }
   }
 
   function playLine(i, token) {
     if (token !== demo.token) return;
-    const lines = CALLS[vertical].lines;
+    const lines = cur().lines;
     if (i >= lines.length) { stopDemo(true); return; }
     demo.idx = i; highlight(i); setProgress(i / lines.length);
     const [role, text] = lines[i];
@@ -239,7 +304,7 @@
     const next = () => { if (advanced || token !== demo.token) return; advanced = true; clearTimeout(demo.timer); demo.timer = setTimeout(() => playLine(i + 1, token), 280); };
     const est = 900 + text.length * 62;
     if ('speechSynthesis' in window && demo.voices.length) {
-      const u = new SpeechSynthesisUtterance(text);
+      const u = new SpeechSynthesisUtterance(text); u.lang = demo.lang === 'es' ? 'es-US' : 'en-US';
       const v = pickVoice(role); if (v) u.voice = v;
       u.rate = role === 'agent' ? 1.04 : 1.0; u.pitch = role === 'agent' ? 1.08 : 0.9;
       u.onend = next; u.onerror = next;
@@ -251,7 +316,7 @@
   }
 
   function playRecording(token) {
-    const c = CALLS[vertical];
+    const c = cur();
     const a = new Audio(c.audio); a.preload = 'auto'; demo.audio = a;
     let last = -1;
     a.addEventListener('timeupdate', () => {
@@ -268,7 +333,7 @@
 
   function startDemo() {
     if (demo.playing) { stopDemo(false); return; }
-    const c = CALLS[vertical];
+    const c = cur();
     if (c.audio) {
       demo.el.classList.remove('is-done');
       demo.token++; demo.playing = true; const token = demo.token;
@@ -400,6 +465,13 @@
   document.addEventListener('DOMContentLoaded', () => {
     demo.el = $('[data-demo]');
     $$('[data-vt]').forEach((b) => b.addEventListener('click', () => setVertical(b.dataset.vt)));
+    $$('[data-lang]').forEach((b) => b.addEventListener('click', () => {
+      demo.lang = b.dataset.lang;
+      $$('[data-lang]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      if (demo.playing) stopDemo(false);
+      demo.el && demo.el.classList.remove('is-done');
+      renderDemo();
+    }));
     $$('[data-demo-link]').forEach((a) => a.addEventListener('click', () => setVertical(a.dataset.demoLink)));
     const play = $('[data-demo-play]'); if (play) play.addEventListener('click', () => { if (!demo.voices.length) loadVoices(); startDemo(); });
     $$('[data-book]').forEach((f) => f.addEventListener('submit', (e) => {

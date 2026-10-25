@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400..600&family=Figtree:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261025d">
+<link rel="stylesheet" href="styles.css?v=20261025e">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="assets/deployai-mark.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -123,11 +123,12 @@
         </div>
       </div>
       <div class="panel-card">
-        <header><h3>Voice agents</h3><p>Simulated calls recorded with neural AI voices, with the record each one creates.</p></header>
+        <header><h3>Voice agents</h3><p>Simulated calls in English and Spanish, recorded with neural AI voices, with the record each one creates.</p></header>
         <div class="vtabs" role="group" aria-label="Choose a demo call">
           <button type="button" data-vt="roofing" aria-pressed="true">Roofing</button>
           <button type="button" data-vt="plumbing" aria-pressed="false">Plumbing</button>
           <button type="button" data-vt="auto" aria-pressed="false">Auto shop</button>
+          <span class="langs" role="group" aria-label="Call language"><button type="button" data-lang="en" aria-pressed="true">English</button><button type="button" data-lang="es" aria-pressed="false">Español</button></span>
         </div>
         <div class="demo" data-demo>
           <div class="demo-main">
@@ -153,7 +154,7 @@
     <div class="center-head">
       <span class="pill">Core use cases</span>
       <h2>Built for how your business takes calls.</h2>
-      <p>One website agent that fits any business, plus voice agents tuned to the rules of each trade.</p>
+      <p>One website agent that fits any business, plus voice agents tuned to the rules of each trade. All of them work in English and Spanish.</p>
     </div>
     <div class="cases-grid">
       <article class="case hi case-web">
@@ -165,6 +166,7 @@
           <li>Embedded with one JavaScript snippet</li>
           <li>Qualifies on your rules before showing calendar slots</li>
           <li>Books straight into your CRM or calendar, 24/7</li>
+          <li>Chats in English or Spanish</li>
           <li>Ready for agent-to-agent booking</li>
         </ul>
         <a class="more" href="#book">Book a consultation</a>
@@ -273,6 +275,7 @@
       <details><summary>What does DeployAI actually do?</summary><p>We learn how customers reach you and how jobs get booked, find the biggest leak, and fix it with AI and automation connected to the software you already use. Then we keep it running.</p></details>
       <details><summary>Will it sound robotic?</summary><p>You hear the voice and approve the script before anything goes live. The demo calls on this page use the same kind of neural voices.</p></details>
       <details><summary>Can callers still reach a person?</summary><p>Yes. Urgent or complicated calls go to you or your team, based on rules you set, like an active leak or a safety issue.</p></details>
+      <details><summary>Can it handle Spanish-speaking callers?</summary><p>Yes. Every agent answers in English and Spanish and follows the caller's language. Your team still gets the job details in English, with the caller's language noted.</p></details>
       <details><summary>What if it gets something wrong?</summary><p>Every call and booking creates a record you can see. We review calls each month and fix anything that was routed or booked wrong.</p></details>
       <details><summary>Do I need to change my phone number or software?</summary><p>No. It works with your current number and the software you run today. If your software can't connect, we'll tell you before you pay anything.</p></details>
       <details><summary>What does it cost?</summary><p>It depends on what we fix. After a 15-minute consultation you get a fixed quote: a one-time setup fee and a monthly fee.</p></details>
@@ -324,6 +327,6 @@
      then paste the bot's config "script URL" below. Leave it empty to show the built-in preview agent. */
   window.DEPLOYAI_BOTPRESS = { configUrl: "" };
 </script>
-<script src="deployai.js?v=20261025d"></script>
+<script src="deployai.js?v=20261025e"></script>
 </body>
 </html>
