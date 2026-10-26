@@ -8,156 +8,156 @@
 
   /* ---------- Data ---------- */
   const CALLS = {
-    roofing: {
-      title: 'Post-storm intake · Summit Ridge Roofing',
-      meta: 'Inbound call → ServiceTitan · 0:57',
-      audio: 'assets/audio/call-roofing.mp3', marks: [0.35, 5.95, 11.88, 15.06, 17.78, 26.03, 29.48, 37.91, 39.11, 49.17, 50.98],
-      target: 'ServiceTitan',
+    hvac: {
+      title: "Pre-freeze safety check · Northfield Heating & Air",
+      meta: "Reply to postcard → job software · 1:11",
+      audio: 'assets/audio/call-hvac.mp3', marks: [0.35, 6.79, 10.68, 17.4, 18.68, 31.25, 35.95, 51.69, 53.29, 64.71, 66.46],
+      target: "your job software",
       lines: [
-        ['agent', 'Summit Ridge Roofing, intake line. First, is water coming into the home right now?'],
-        ['caller', "No, nothing inside. We had that hail Tuesday and my neighbor says my roof looks beat up."],
-        ['agent', "Let's get someone out there. What's the property address?"],
-        ['caller', '1418 Larkspur Drive, Plano.'],
-        ['agent', "Got it, that's 75023, inside our service area. Do you know the shingle type and roughly how old the roof is?"],
-        ['caller', 'The flat asphalt kind. Maybe 17 years.'],
-        ['agent', '3-tab shingles at 17 years, after Tuesday\'s hail, usually qualify for an insurance claim. Have you filed one yet?'],
-        ['caller', 'Not yet.'],
-        ['agent', 'No problem. I have Thursday at 10:00 AM or 2:00 PM for a free inspection. Our estimator will document the damage for your adjuster.'],
-        ['caller', '2:00 PM works.'],
-        ['agent', "You're booked for Thursday at 2:00 PM. A text confirmation is on its way to this number."]
+        ["agent", "Thanks for calling Northfield Heating and Air, this is the virtual assistant. How can I help?"],
+        ["caller", "Hi, I got a postcard about a safety check before the freeze."],
+        ["agent", "Happy to help. I see this number on the account for Dana Reyes on Linden Court. Is that you?"],
+        ["caller", "That's me."],
+        ["agent", "Great. Our records show the furnace we installed in 2010, so it's about 16 years old. Is it running now, and have you noticed a gas smell or a carbon monoxide alarm?"],
+        ["caller", "It's running, just a little noisy when it kicks on. No smell, no alarms."],
+        ["agent", "Good. A noise at startup is worth checking before the first cold night. The safety check is $89 with the postcard offer, through November 15. I have Thursday at 9 AM or Friday at 1 PM."],
+        ["caller", "Thursday at nine."],
+        ["agent", "You're booked for Thursday at 9 AM. If you join our maintenance plan at the visit, the $89 goes toward your first year. The tech can explain it on site."],
+        ["caller", "Okay, sounds good."],
+        ["agent", "I'm texting your confirmation now. The tech will call when they're on the way."]
       ],
-      payload: {
-        crm: 'servicetitan', job_type: 'inspection',
-        customer: { phone: '+1469555••••', source: 'caller_id' },
-        address: { line1: '1418 Larkspur Dr', zip: '75023', verified: true, in_service_zone: true },
-        roof: { material: '3-tab asphalt', age_years: 17 },
-        damage_cause: 'hail', storm_event: 'Tue 2026-10-20 · hail 1.25 in',
-        claim_status: 'not_filed',
-        route: 'insurance_claim_workflow',
-        inspection_slot: 'Thu 14:00',
-        emergency_escalation: false
-      }
+      payload: {"system": "job_software", "job_type": "furnace_safety_check", "customer": {"name": "Dana R.", "phone": "+1972555••••", "match": "returning"}, "campaign": {"segment": "furnace_due_before_freeze", "group": "outreach", "channel_seen": "mailer", "offer": "Safety check $89 · through Nov 15", "due_score": 94}, "equipment": {"type": "gas furnace", "installed": 2010, "age_years": 16}, "safety_screen": {"gas_smell": false, "co_alarm": false, "escalate": false}, "symptom": "noisy at startup", "visit_slot": "Thu 09:00", "plan_offer": "$89 credited if joined at visit"}
     },
     plumbing: {
-      title: 'Leaking water heater · Brightwater Plumbing',
-      meta: 'After-hours call → Jobber · 1:01',
-      audio: 'assets/audio/call-plumbing.mp3', marks: [0.35, 5.49, 10.12, 19.0, 21.76, 26.07, 29.72, 43.99, 45.81, 48.28, 52.7],
-      target: 'Jobber',
+      title: "Water heater estimate · Brightwater Plumbing",
+      meta: "Reply to email → job software · 0:52",
+      audio: 'assets/audio/call-plumbing.mp3', marks: [0.35, 4.62, 9.89, 12.99, 14.14, 23.78, 27.31, 42.45, 44.31],
+      target: "your job software",
       lines: [
-        ['agent', 'Brightwater Plumbing, after-hours line. Is water leaking or spreading right now?'],
-        ['caller', "Yeah, my water heater's leaking. There's a puddle all over the garage."],
-        ['agent', "Let's stop the water first. On top of the heater, find the valve on the cold-water pipe and turn it clockwise until it stops. Can you do that now?"],
-        ['caller', "Okay... done. It's slowing down."],
-        ['agent', 'Good. Is the heater gas or electric, and roughly how old is it?'],
-        ['caller', 'Gas. It came with the house, so maybe twelve years.'],
-        ['agent', 'At twelve years with a leaking tank, replacing it usually makes more sense than a repair. With the water off, it can safely wait until morning, so you avoid the emergency rate. I have Sunday at 8 AM. Does that work?'],
-        ['caller', 'Yes, eight works.'],
-        ['agent', 'Great. Can I get your name and address?'],
-        ['caller', 'Mark Ellis, 2207 Cedar Bend Road.'],
-        ['agent', "You're booked for Sunday at 8 AM, Mark. Our tech will bring replacement options and give you a price on site. I'm texting your confirmation now."]
+        ["agent", "Brightwater Plumbing, this is the virtual assistant. How can I help?"],
+        ["caller", "Hi, I got your email about replacing my water heater before it fails."],
+        ["agent", "Of course. Is this Sam Turner on Brookhollow Lane?"],
+        ["caller", "Yes."],
+        ["agent", "Thanks, Sam. We installed your water heater in 2013, and there's no flush on record since. Any water around the base, rust, or rumbling noises?"],
+        ["caller", "Some rumbling lately. No water that I've seen."],
+        ["agent", "Rumbling usually means sediment buildup, which is common at that age. A free replacement estimate takes about 30 minutes, and planning it now means no emergency rate later. I have Saturday at 10 AM or Monday at 4 PM."],
+        ["caller", "Saturday at ten."],
+        ["agent", "You're booked for Saturday at 10 AM. The tech will also check which rebates you qualify for. I'm texting your confirmation now."]
       ],
-      payload: {
-        fsm: 'jobber', job_type: 'water_heater_replacement_estimate',
-        customer: { name: 'Mark E.', phone: '+1214555••••' },
-        address: { line1: '2207 Cedar Bend Rd', verified: true },
-        issue: 'tank leak',
-        triage: { active_leak: true, shutoff_done: true, gas_smell: false, emergency_dispatch: false },
-        equipment: { type: 'gas water heater', age_years: 12 },
-        recommendation: 'replace',
-        visit_slot: 'Sun 08:00',
-        kg_rules: ['leak + shutoff confirmed → next-morning slot', 'tank age ≥ 10 + leak → replacement quote']
-      }
+      payload: {"system": "job_software", "job_type": "water_heater_replacement_estimate", "customer": {"name": "Sam T.", "phone": "+1214555••••", "match": "returning"}, "campaign": {"segment": "water_heater_end_of_life", "group": "outreach", "channel_seen": "email", "offer": "Free replacement estimate", "due_score": 92}, "equipment": {"type": "tank water heater", "installed": 2013, "age_years": 13, "last_flush": null}, "symptoms": ["rumbling"], "triage": {"active_leak": false, "emergency_dispatch": false}, "visit_slot": "Sat 10:00", "notes": "check rebate eligibility"}
+    },
+    roofing: {
+      title: "Storm inspection · Summit Ridge Roofing",
+      meta: "Reply to mailer → job software · 0:54",
+      audio: 'assets/audio/call-roofing.mp3', marks: [0.35, 6.99, 12.9, 17.27, 18.75, 29.82, 33.71, 38.4, 39.83, 47.56, 48.99],
+      target: "your job software",
+      lines: [
+        ["agent", "Summit Ridge Roofing, this is the virtual assistant. First, is water coming into the home right now?"],
+        ["caller", "No, nothing inside. I got your card about a free storm inspection after the hail."],
+        ["agent", "Glad you called. Is this Hank Dawson on Larkspur Drive in Plano?"],
+        ["caller", "That's right."],
+        ["agent", "Our records show your roof is about 17 years old, with 3-tab shingles, and your street was in the path of last week's hail. Have you noticed missing shingles or grit in the gutters?"],
+        ["caller", "There's a lot of grit in the gutters, now that you mention it."],
+        ["agent", "That's a common sign of hail damage. Have you filed an insurance claim yet?"],
+        ["caller", "Not yet."],
+        ["agent", "No problem. Our estimator will document the damage for your adjuster. I have Thursday at 10 AM or 2 PM."],
+        ["caller", "Two works."],
+        ["agent", "You're booked for Thursday at 2 PM. A text confirmation is on its way."]
+      ],
+      payload: {"system": "job_software", "job_type": "storm_inspection", "customer": {"name": "Hank D.", "phone": "+1469555••••", "match": "returning"}, "campaign": {"segment": "hail_path_inspection", "group": "outreach", "channel_seen": "mailer", "offer": "Free storm inspection", "due_score": 95}, "address": {"street": "Larkspur Dr", "city": "Plano", "in_hail_path": true}, "roof": {"material": "3-tab asphalt", "age_years": 17}, "signs": ["granules in gutters"], "water_inside": false, "claim_status": "not_filed", "route": "insurance_claim_workflow", "inspection_slot": "Thu 14:00"}
     },
     auto: {
-      title: 'Brake repair + oil change · Northgate Auto Care',
-      meta: 'Inbound call → Tekmetric · 0:57',
-      audio: 'assets/audio/call-auto.mp3', marks: [0.35, 4.18, 8.86, 15.26, 16.89, 21.82, 23.72, 30.81, 33.93, 47.37, 49.09],
-      target: 'Tekmetric',
+      title: "Oil change + brake check · Northgate Auto Care",
+      meta: "Reply to text → shop software · 0:55",
+      audio: 'assets/audio/call-auto.mp3', marks: [0.35, 5.17, 9.53, 16.23, 17.32, 25.32, 27.01, 35.99, 37.51, 46.47, 47.99],
+      target: "your shop software",
       lines: [
-        ['agent', 'Northgate Auto Care, service desk. How can I help you today?'],
-        ['caller', 'Hi. My brakes started squealing this week, mostly when I come to a stop.'],
-        ['agent', 'I can get that looked at. I see this number on a 2019 Honda CR-V. Is that the car?'],
-        ['caller', "Yep, that's the one."],
-        ['agent', 'Does the brake pedal feel soft, or does the car pull to one side when you stop?'],
-        ['caller', "No, it's just the noise."],
-        ['agent', "Okay. That's usually worn pads. I can do a free brake inspection tomorrow at 8:00 AM or 1:00 PM."],
-        ['caller', "8:00 works. I'll drop it off on my way to work."],
-        ['agent', "You're set for 8:00. One more thing: your last oil change was about 6,200 miles ago, so it's due. Want us to do a synthetic oil change while the car is here? It's $69.99, and it won't add any time."],
-        ['caller', 'Sure, add that too.'],
-        ['agent', "Done. Brake inspection and oil change, tomorrow at 8:00 AM. We'll text you an estimate before we do any brake work."]
+        ["agent", "Northgate Auto Care, this is the virtual assistant. How can I help?"],
+        ["caller", "Hi, I got a text saying my oil change is due. I'd like to book it."],
+        ["agent", "Sure. I see this number on a 2019 Honda CR-V for Jamie Chen. Is that right?"],
+        ["caller", "Yep."],
+        ["agent", "Thanks, Jamie. You're about 6,200 miles past your last oil change. Any warning lights or new noises?"],
+        ["caller", "No, it's been fine."],
+        ["agent", "Good. At your last visit, the tech noted your front brake pads were getting thin. Want a free brake check while it's here? It won't add time."],
+        ["caller", "Sure, why not."],
+        ["agent", "I have tomorrow at 8 AM or Thursday at noon. The synthetic oil change is $69.99, as in the text."],
+        ["caller", "Tomorrow at eight."],
+        ["agent", "Done. Oil change and brake check, tomorrow at 8 AM. We'll text you before doing any extra work."]
       ],
-      payload: {
-        sms: 'tekmetric', customer: { phone: '+1214555••••', match: 'returning' },
-        vehicle: { year: 2019, make: 'Honda', model: 'CR-V', oil_change_due: true, miles_since: 6200 },
-        concern: 'brake squeal when stopping',
-        safety_screen: { soft_pedal: false, pulling: false, escalate: false },
-        repair_order: {
-          appointment: 'tomorrow 08:00', drop_off: true,
-          jobs: [
-            { job: 'brake_inspection', price: 0 },
-            { job: 'synthetic_oil_change', price: 69.99, source: 'agent_upsell' }
-          ]
-        },
-        estimate_approval: 'sms_before_brake_work'
-      }
+      payload: {"system": "shop_software", "customer": {"name": "Jamie C.", "phone": "+1214555••••", "match": "returning"}, "campaign": {"segment": "service_due_winter", "group": "outreach", "channel_seen": "sms_opt_in", "offer": "Synthetic oil change $69.99", "due_score": 91}, "vehicle": {"year": 2019, "make": "Honda", "model": "CR-V", "miles_since_oil_change": 6200}, "screen": {"warning_lights": false, "new_noises": false}, "repair_order": {"appointment": "tomorrow 08:00", "jobs": [{"job": "synthetic_oil_change", "price": 69.99, "source": "campaign"}, {"job": "brake_inspection", "price": 0, "source": "agent · pads thin at last visit"}]}, "estimate_approval": "sms_before_extra_work"}
     }
   };
 
   /* Spanish versions of each call: same rules, same record (field values stay in English, language noted). */
   const CALLS_ES = {
-    roofing: {
-      title: "Post-storm intake in Spanish · Summit Ridge Roofing",
-      meta: "Inbound call → ServiceTitan · 0:59",
-      audio: 'assets/audio/call-roofing-es.mp3', marks: [0.35, 6.3, 12.07, 16.01, 19.17, 27.5, 31.42, 39.32, 40.71, 50.48, 52.51],
+    hvac: {
+      title: "Pre-freeze safety check in Spanish · Northfield Heating & Air",
+      meta: "Reply to postcard → job software · 1:12",
+      audio: 'assets/audio/call-hvac-es.mp3', marks: [0.35, 6.62, 11.51, 16.44, 17.77, 29.8, 35.82, 50.24, 52.1, 64.26, 66.03],
       lines: [
-        ["agent", "Summit Ridge Roofing, línea de atención. Primero, ¿está entrando agua a la casa en este momento?"],
-        ["caller", "No, adentro no. Pero cayó granizo el martes y mi vecino dice que el techo se ve muy dañado."],
-        ["agent", "Vamos a mandar a alguien. ¿Cuál es la dirección de la propiedad?"],
-        ["caller", "1418 Larkspur Drive, en Plano."],
-        ["agent", "Perfecto, esa dirección está dentro de nuestra zona de servicio. ¿Sabe qué tipo de tejas tiene y más o menos cuántos años tiene el techo?"],
-        ["caller", "Las tejas planas de asfalto. Tiene como 17 años."],
-        ["agent", "Con tejas de asfalto de 17 años y el granizo del martes, normalmente califica para un reclamo al seguro. ¿Ya lo presentó?"],
-        ["caller", "Todavía no."],
-        ["agent", "No hay problema. Tengo el jueves a las 10:00 de la mañana o a las 2:00 de la tarde para una inspección gratis. Nuestro estimador va a documentar los daños para su ajustador."],
-        ["caller", "A las 2:00 me queda bien."],
-        ["agent", "Listo, quedó agendado para el jueves a las 2:00 de la tarde. Le acabo de enviar la confirmación por mensaje de texto."]
+        ["agent", "Gracias por llamar a Northfield Heating and Air, le atiende el asistente virtual. ¿En qué le puedo ayudar?"],
+        ["caller", "Hola, recibí una postal sobre una revisión de seguridad antes de las heladas."],
+        ["agent", "Con gusto. Veo este número en la cuenta de Dana Reyes, en Linden Court. ¿Es usted?"],
+        ["caller", "Sí, soy yo."],
+        ["agent", "Perfecto. Según nuestros registros, instalamos su calefacción en 2010, así que tiene unos 16 años. ¿Está funcionando ahora? ¿Ha notado olor a gas o alguna alarma de monóxido de carbono?"],
+        ["caller", "Funciona, solo hace un poco de ruido cuando arranca. No huele a nada y no ha sonado ninguna alarma."],
+        ["agent", "Bien. Un ruido al arrancar conviene revisarlo antes de la primera noche fría. La revisión cuesta 89 dólares con la oferta de la postal, hasta el 15 de noviembre. Tengo el jueves a las 9 de la mañana o el viernes a la 1 de la tarde."],
+        ["caller", "El jueves a las nueve."],
+        ["agent", "Listo, quedó para el jueves a las 9 de la mañana. Si se inscribe en nuestro plan de mantenimiento durante la visita, los 89 dólares se abonan a su primer año. El técnico se lo explica en persona."],
+        ["caller", "Muy bien, perfecto."],
+        ["agent", "Le estoy enviando la confirmación por mensaje de texto. El técnico le llamará cuando vaya en camino."]
       ]
     },
     plumbing: {
-      title: "Leaking water heater in Spanish · Brightwater Plumbing",
-      meta: "After-hours call → Jobber · 1:06",
-      audio: 'assets/audio/call-plumbing-es.mp3', marks: [0.35, 6.39, 11.11, 20.37, 22.72, 27.82, 31.4, 45.91, 48.05, 50.84, 54.54],
+      title: "Water heater estimate in Spanish · Brightwater Plumbing",
+      meta: "Reply to email → job software · 0:56",
+      audio: 'assets/audio/call-plumbing-es.mp3', marks: [0.35, 4.92, 9.8, 13.05, 14.02, 25.16, 28.4, 44.51, 46.28],
       lines: [
-        ["agent", "Brightwater Plumbing, línea fuera de horario. ¿Hay una fuga de agua o se está regando en este momento?"],
-        ["caller", "Sí, el calentador de agua está goteando. Hay un charco en todo el garaje."],
-        ["agent", "Primero vamos a cerrar el agua. Arriba del calentador, busque la llave del tubo de agua fría y gírela a la derecha hasta que ya no dé más. ¿Puede hacerlo ahorita?"],
-        ["caller", "A ver... listo. Ya está bajando."],
-        ["agent", "Muy bien. ¿El calentador es de gas o eléctrico, y más o menos cuántos años tiene?"],
-        ["caller", "De gas. Venía con la casa, así que como 12 años."],
-        ["agent", "Con 12 años y el tanque goteando, normalmente conviene más reemplazarlo que repararlo. Con el agua cerrada, puede esperar hasta mañana sin peligro, y así se ahorra la tarifa de emergencia. Tengo el domingo a las 8:00 de la mañana. ¿Le funciona?"],
-        ["caller", "Sí, a las 8:00 está bien."],
-        ["agent", "Perfecto. ¿Me da su nombre y su dirección?"],
-        ["caller", "Marco Elizondo, 2207 Cedar Bend Road."],
-        ["agent", "Listo, Marco, quedó agendado para el domingo a las 8:00 de la mañana. El técnico va a llevar opciones de reemplazo y le da el precio ahí mismo. Le estoy enviando la confirmación por mensaje de texto."]
-      ],
-      payload: {"customer": {"name": "Marco E.", "phone": "+1214555••••"}}
+        ["agent", "Brightwater Plumbing, le atiende el asistente virtual. ¿En qué le puedo ayudar?"],
+        ["caller", "Hola, recibí su correo sobre cambiar mi calentador de agua antes de que falle."],
+        ["agent", "Claro. ¿Hablo con Sam Turner, en Brookhollow Lane?"],
+        ["caller", "Sí."],
+        ["agent", "Gracias, Sam. Instalamos su calentador en 2013 y no tenemos registro de limpieza desde entonces. ¿Ha visto agua alrededor de la base, óxido, o escucha ruidos como retumbos?"],
+        ["caller", "Últimamente retumba un poco. Agua no he visto."],
+        ["agent", "Ese ruido suele ser acumulación de sedimento, algo común a esa edad. El presupuesto de reemplazo es gratis y toma unos 30 minutos, y planearlo ahora evita pagar una tarifa de emergencia después. Tengo el sábado a las 10 de la mañana o el lunes a las 4 de la tarde."],
+        ["caller", "El sábado a las diez."],
+        ["agent", "Listo, quedó para el sábado a las 10 de la mañana. El técnico también revisará para qué reembolsos califica. Le envío la confirmación por mensaje de texto."]
+      ]
+    },
+    roofing: {
+      title: "Storm inspection in Spanish · Summit Ridge Roofing",
+      meta: "Reply to mailer → job software · 0:58",
+      audio: 'assets/audio/call-roofing-es.mp3', marks: [0.35, 6.99, 12.94, 17.34, 18.56, 31.89, 35.26, 40.3, 41.69, 49.88, 51.8],
+      lines: [
+        ["agent", "Summit Ridge Roofing, le atiende el asistente virtual. Primero, ¿está entrando agua a la casa en este momento?"],
+        ["caller", "No, adentro está todo bien. Recibí su tarjeta sobre una inspección gratis después del granizo."],
+        ["agent", "Qué bueno que llamó. ¿Hablo con Hank Dawson, en Larkspur Drive, en Plano?"],
+        ["caller", "Así es."],
+        ["agent", "Según nuestros registros, su techo tiene unos 17 años, con tejas asfálticas de tres pestañas, y su calle estuvo en la zona del granizo de la semana pasada. ¿Ha notado tejas sueltas o arenilla en las canaletas?"],
+        ["caller", "Ahora que lo dice, hay mucha arenilla en las canaletas."],
+        ["agent", "Esa es una señal común de daño por granizo. ¿Ya presentó un reclamo al seguro?"],
+        ["caller", "Todavía no."],
+        ["agent", "No se preocupe. Nuestro evaluador documentará el daño para su ajustador. Tengo el jueves a las 10 de la mañana o a las 2 de la tarde."],
+        ["caller", "A las dos está bien."],
+        ["agent", "Listo, quedó para el jueves a las 2 de la tarde. Le enviamos la confirmación por mensaje de texto."]
+      ]
     },
     auto: {
-      title: "Brake repair + oil change in Spanish · Northgate Auto Care",
-      meta: "Inbound call → Tekmetric · 1:03",
-      audio: 'assets/audio/call-auto-es.mp3', marks: [0.35, 4.6, 9.44, 15.52, 16.91, 21.91, 24.04, 33.17, 36.12, 51.63, 53.79],
+      title: "Oil change + brake check in Spanish · Northgate Auto Care",
+      meta: "Reply to text → shop software · 1:01",
+      audio: 'assets/audio/call-auto-es.mp3', marks: [0.35, 5.32, 10.76, 16.97, 17.89, 26.54, 27.99, 39.32, 40.96, 51.12, 52.87],
       lines: [
-        ["agent", "Northgate Auto Care, mostrador de servicio. ¿En qué le puedo ayudar?"],
-        ["caller", "Hola. Esta semana los frenos empezaron a rechinar, sobre todo cuando me paro."],
-        ["agent", "Con gusto lo revisamos. Veo este número con una Honda CR-V 2019. ¿Es ese el carro?"],
-        ["caller", "Sí, esa es."],
-        ["agent", "¿El pedal del freno se siente suave, o el carro se jala hacia un lado cuando frena?"],
-        ["caller", "No, nada más es el ruido."],
-        ["agent", "Bueno. Eso normalmente son las pastillas gastadas. Le puedo hacer una inspección de frenos gratis mañana a las 8:00 de la mañana o a la 1:00 de la tarde."],
-        ["caller", "A las 8:00. Lo dejo de camino al trabajo."],
-        ["agent", "Quedó para las 8:00. Una cosa más: su último cambio de aceite fue hace como 6,200 millas, así que ya le toca. ¿Quiere que le hagamos un cambio de aceite sintético mientras el carro está aquí? Cuesta $69.99 y no le agrega tiempo."],
-        ["caller", "Claro, agréguelo también."],
-        ["agent", "Listo. Inspección de frenos y cambio de aceite, mañana a las 8:00 de la mañana. Le mandamos un presupuesto por mensaje antes de hacer cualquier trabajo en los frenos."]
+        ["agent", "Northgate Auto Care, le atiende el asistente virtual. ¿En qué le puedo ayudar?"],
+        ["caller", "Hola, recibí un mensaje que dice que ya me toca el cambio de aceite. Quiero hacer una cita."],
+        ["agent", "Claro. Veo este número con una Honda CR-V 2019 a nombre de Jamie Chen. ¿Es correcto?"],
+        ["caller", "Sí."],
+        ["agent", "Gracias, Jamie. Ya pasaron unas 6,200 millas desde su último cambio de aceite. ¿Alguna luz de advertencia o algún ruido nuevo?"],
+        ["caller", "No, todo bien."],
+        ["agent", "Qué bueno. En su última visita, el técnico anotó que las pastillas de freno delanteras estaban algo gastadas. ¿Quiere una revisión de frenos gratis mientras está aquí? No toma tiempo extra."],
+        ["caller", "Claro, ¿por qué no?"],
+        ["agent", "Tengo mañana a las 8 de la mañana o el jueves al mediodía. El cambio de aceite sintético cuesta 69.99 dólares, como dice el mensaje."],
+        ["caller", "Mañana a las ocho."],
+        ["agent", "Listo. Cambio de aceite y revisión de frenos, mañana a las 8 de la mañana. Le enviaremos un mensaje antes de hacer cualquier trabajo adicional."]
       ]
     }
   };
@@ -425,7 +425,7 @@
     function showInput() { opts.hidden = true; if (form) { form.hidden = false; input.value = ''; } }
     function renderRecord(done) {
       if (!rec) return;
-      const r = { source: 'website_agent', channel: 'web_chat', intent: state.goal || null, industry: state.industry || null, weekly_volume: state.volume || null, qualified: !!state.volume, contact: state.email || null, meeting: done ? { type: 'consultation', slot: state.slot, tz: 'America/Los_Angeles' } : null, synced_to: done ? ['google_calendar', 'hubspot'] : [] };
+      const r = { source: 'website_agent', channel: 'web_chat', intent: state.goal || null, industry: state.industry || null, weekly_volume: state.volume || null, qualified: !!state.volume, contact: state.email || null, meeting: done ? { type: 'consultation', slot: state.slot, tz: 'America/Los_Angeles' } : null, synced_to: done ? ['calendar', 'crm'] : [] };
       rec.textContent = JSON.stringify(r, null, 2);
     }
     function step() {

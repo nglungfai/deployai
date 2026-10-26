@@ -1,6 +1,6 @@
 # DeployAI
 
-Marketing website and brand assets for **DeployAI**: AI and automation for the trades, set up and managed for you. DeployAI finds where trade businesses lose leads and time, builds the fix with AI and the software they already run, and keeps it running.
+Marketing website and brand assets for **DeployAI**: AI and automation for home service businesses, set up and managed for you. DeployAI scores a business's past customers, reaches the ones who are due for service, answers when they call with AI agents, and measures the jobs it added against a holdout group.
 
 **Live site:** https://nglungfai.github.io/deployai/
 
@@ -10,7 +10,8 @@ Marketing website and brand assets for **DeployAI**: AI and automation for the t
 /                     Website (served by GitHub Pages from the repo root)
 ├── index.html        Home page
 ├── styles.css        Site styles
-├── deployai.js       Interactive demos, knowledge-graph examples, Botpress embed loader
+├── deployai.js       Voice call demos, Botpress embed loader
+├── due.js            "Who's due this month" scored-list demo
 ├── favicon.ico
 ├── assets/           Logos, icons, social share image, demo call audio
 │   └── audio/
