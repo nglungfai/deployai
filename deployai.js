@@ -403,7 +403,7 @@
     const state = {};
     const STEPS = [
       { key: 'goal', bot: "Hi, I'm DeployAI's scheduling assistant. What would you like to automate first?", opts: ['Website inquiries', 'Phone calls', 'Back-office workflows'] },
-      { key: 'industry', bot: 'Got it. What kind of business are you?', opts: ['Roofing', 'Plumbing or HVAC', 'Auto repair', 'Another trade'] },
+      { key: 'industry', bot: 'Got it. What kind of business are you?', opts: ['Roofing', 'Plumbing or HVAC', 'Electrical', 'Another home service'] },
       { key: 'volume', bot: 'Roughly how many inquiries or calls do you get in a week?', opts: ['Under 25', '25 to 100', 'More than 100'] },
       { key: 'slot', bot: 'Thanks, that fits a consultation. Here are open 15-minute slots (Pacific):', opts: ['Tue 10:00 AM', 'Tue 2:30 PM', 'Wed 11:00 AM'] },
       { key: 'email', bot: 'Great. What email should the calendar invite go to?', input: true }

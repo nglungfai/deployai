@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400..600&family=Figtree:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261026p">
+<link rel="stylesheet" href="styles.css?v=20261026r">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="assets/deployai-mark.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -64,7 +64,7 @@
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="pill">For trades and local service businesses</span>
+      <span class="pill">For home service businesses</span>
       <h1>AI, <span class="hl">deployed.</span></h1>
       <p class="lead">We know who's due before they do.</p>
       <p class="sub">We score your past customers, reach the ones who are due, and answer when they call. Then we show you the jobs it added.</p>
@@ -102,6 +102,23 @@
       <li class="step"><span class="num">2</span><h3>Reach who's due</h3><p>Mail, email and consented texts under your brand, with an offer that matches why each customer is due.</p><ul><li>Some customers are held out at random</li></ul></li>
       <li class="step"><span class="num">3</span><h3>Book and measure</h3><p>Our AI agents answer the calls and book the jobs. We compare outreach with the holdout to show the jobs we actually added.</p><ul><li>Results report after every campaign</li></ul></li>
     </ol>
+    <div class="who">
+      <div class="who-head">
+        <h3>Built for home service businesses</h3>
+        <p>If your customers need you again on a schedule, we can find who's due.</p>
+      </div>
+      <ul class="who-list">
+        <li><svg class="ic"><use href="#i-check"/></svg><div><b>Heating and cooling</b><small>Seasonal tune-ups, aging systems</small></div></li>
+        <li><svg class="ic"><use href="#i-check"/></svg><div><b>Plumbing</b><small>Water heaters, drains, pipes</small></div></li>
+        <li><svg class="ic"><use href="#i-check"/></svg><div><b>Roofing and gutters</b><small>Roof age, storm damage</small></div></li>
+        <li><svg class="ic"><use href="#i-check"/></svg><div><b>Electrical</b><small>Panel upgrades, safety checks</small></div></li>
+        <li><svg class="ic"><use href="#i-check"/></svg><div><b>Pest control</b><small>Quarterly and seasonal treatments</small></div></li>
+        <li><svg class="ic"><use href="#i-check"/></svg><div><b>Lawn care and landscaping</b><small>Seasonal programs</small></div></li>
+        <li><svg class="ic"><use href="#i-check"/></svg><div><b>Pool and spa</b><small>Openings, closings, equipment</small></div></li>
+        <li><svg class="ic"><use href="#i-check"/></svg><div><b>Garage doors</b><small>Springs, openers, tune-ups</small></div></li>
+        <li><svg class="ic"><use href="#i-check"/></svg><div><b>Water treatment</b><small>Filters and softener service</small></div></li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -118,7 +135,6 @@
         <button type="button" data-due-tab="hvac" aria-pressed="true">HVAC</button>
         <button type="button" data-due-tab="plumbing" aria-pressed="false">Plumbing</button>
         <button type="button" data-due-tab="roofing" aria-pressed="false">Roofing</button>
-        <button type="button" data-due-tab="auto" aria-pressed="false">Auto shop</button>
       </div>
       <div class="demo">
         <div class="demo-main">
@@ -141,7 +157,6 @@
           <button type="button" data-vt="hvac" aria-pressed="true">HVAC</button>
           <button type="button" data-vt="plumbing" aria-pressed="false">Plumbing</button>
           <button type="button" data-vt="roofing" aria-pressed="false">Roofing</button>
-          <button type="button" data-vt="auto" aria-pressed="false">Auto shop</button>
           <span class="langs" role="group" aria-label="Call language"><button type="button" data-lang="en" aria-pressed="true">English</button><button type="button" data-lang="es" aria-pressed="false">Español</button></span>
         </div>
         <div class="demo" data-demo>
@@ -182,13 +197,15 @@
   <div class="wrap" data-chat>
     <div class="copy">
       <span class="pill">Get started</span>
-      <h2>Book a consultation with our AI agent.</h2>
-      <p>No forms. Our website agent asks a few questions, checks fit and books a 15-minute consultation. It's the same agent we build for clients, so this is your demo too.</p>
+      <h2>Book a consultation your way.</h2>
+      <p>This is a live demo of what we put on your site: an AI agent that qualifies and books, plus a form for customers who'd rather skip the chat.</p>
       <ul>
-        <li><svg class="ic"><use href="#i-check"/></svg>Qualifies before it shows calendar slots</li>
-        <li><svg class="ic"><use href="#i-check"/></svg>Books straight into our calendar and CRM</li>
-        <li><svg class="ic"><use href="#i-check"/></svg>Deployed on your site with one snippet</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>AI agent qualifies before it shows calendar slots</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Booking form for customers who prefer to fill one in</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Both book into the same calendar and CRM</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Added to your website, matched to your brand</li>
       </ul>
+      <div class="cta-alt"><span>Prefer a form? Same booking, no chat.</span><a class="btn btn-white" href="https://cmvpp2ny40002irz3isizl6zx.zapier.app/book-your-appointment" target="_blank" rel="noopener">Book with Form</a></div>
       <div class="rec-card"><h4>What our CRM receives</h4><pre data-chat-record></pre><p data-chat-status>Waiting for a visitor</p></div>
     </div>
     <div class="agent">
@@ -213,16 +230,16 @@
     <div class="about"><a class="logo" href="index.html" aria-label="DeployAI home"><svg class="logo-svg" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="4.00 -72.00 383.12 92.00"><path fill="#FFFFFF" d="M150.2 1Q144.7 1 140.4 -1.35Q137.54 -2.91 135.5 -5.25V20H124.5V-48H135.5V-42.66Q137.59 -45.06 140.5 -46.65Q144.8 -49 150.2 -49Q156.7 -49 161.95 -45.65Q167.2 -42.3 170.25 -36.65Q173.3 -31 173.3 -23.9Q173.3 -16.9 170.25 -11.25Q167.2 -5.6 161.95 -2.3Q156.7 1 150.2 1ZM227.7 1Q220.7 1 215 -2.35Q209.3 -5.7 205.95 -11.4Q202.6 -17.1 202.6 -24.1Q202.6 -31.1 205.95 -36.7Q209.3 -42.3 215 -45.65Q220.7 -49 227.7 -49Q234.8 -49 240.5 -45.7Q246.2 -42.4 249.55 -36.75Q252.9 -31.1 252.9 -24.1Q252.9 -17.1 249.55 -11.4Q246.2 -5.7 240.5 -2.35Q234.8 1 227.7 1ZM93.4 1Q86.2 1 80.45 -2.25Q74.7 -5.5 71.35 -11.2Q68 -16.9 68 -24Q68 -31.1 71.3 -36.75Q74.6 -42.4 80.25 -45.7Q85.9 -49 92.8 -49Q99.5 -49 104.65 -45.9Q109.8 -42.8 112.75 -37.4Q115.7 -32 115.7 -25.1Q115.7 -23.9 115.55 -22.65Q115.4 -21.4 115.1 -19.9H79.29Q79.74 -18.02 80.6 -16.4Q82.4 -13 85.7 -11.15Q89 -9.3 93.3 -9.3Q97 -9.3 100.15 -10.6Q103.3 -11.9 105.5 -14.4L112.5 -7.3Q109 -3.2 104 -1.1Q99 1 93.4 1ZM4 -29.55 15.5 -41.05V-11.5H26C38.98 -11.5 49.5 -22.02 49.5 -35C49.5 -45.85 42.14 -54.99 32.14 -57.69L41.06 -66.6C52.85 -60.97 61 -48.94 61 -35C61 -15.67 45.33 0 26 0H4ZM261.6 20 273.65 -4.83 255.4 -48H267.5L279.8 -16.73L292.8 -48H305L282.7 0.5L273.8 20ZM182.5 0V-72H193.5V0ZM227.7 -9.6Q231.8 -9.6 234.95 -11.45Q238.1 -13.3 239.85 -16.6Q241.6 -19.9 241.6 -24.1Q241.6 -28.3 239.8 -31.5Q238 -34.7 234.9 -36.55Q231.8 -38.4 227.7 -38.4Q223.7 -38.4 220.55 -36.55Q217.4 -34.7 215.65 -31.5Q213.9 -28.3 213.9 -24.1Q213.9 -19.9 215.65 -16.6Q217.4 -13.3 220.55 -11.45Q223.7 -9.6 227.7 -9.6ZM148.4 -9.4Q152.4 -9.4 155.45 -11.25Q158.5 -13.1 160.25 -16.4Q162 -19.7 162 -24Q162 -28.3 160.25 -31.6Q158.5 -34.9 155.45 -36.75Q152.4 -38.6 148.4 -38.6Q144.4 -38.6 141.3 -36.75Q138.2 -34.9 136.5 -31.6Q134.8 -28.3 134.8 -24Q134.8 -19.7 136.5 -16.4Q138.2 -13.1 141.3 -11.25Q144.4 -9.4 148.4 -9.4ZM79.32 -28.9H104.87Q104.44 -31.02 103.6 -32.7Q102.1 -35.7 99.35 -37.3Q96.6 -38.9 92.6 -38.9Q88.4 -38.9 85.3 -37.1Q82.2 -35.3 80.5 -32.05Q79.74 -30.6 79.32 -28.9Z"/><path fill="#8EA3C7" d="M300 0 328.18 -70H339.23L367.31 0H352.87L347.95 -13.04H319.14L314.14 0ZM373.58 0V-70H387.12V0ZM4 -70H26C28.93 -70 31.78 -69.64 34.5 -68.96L4 -38.45ZM343.66 -24.4 333.64 -50.91 323.48 -24.4Z"/></svg></a><p>Set up and managed for you.</p></div>
     <div><h4>What we do</h4><ul><li><a href="#demos">Past-customer reactivation</a></li><li><a href="#demos">AI voice and website agents</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="#approach">How it works</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-    <div><h4>Get started</h4><ul><li><a href="#book">Book a consultation</a></li><li><a href="#demos">Try the demos</a></li></ul></div>
+    <div><h4>Get started</h4><ul><li><a href="#book">Book a consultation</a></li><li><a href="https://cmvpp2ny40002irz3isizl6zx.zapier.app/book-your-appointment" target="_blank" rel="noopener">Book with Form</a></li><li><a href="#demos">Try the demos</a></li></ul></div>
   </div>
-  <div class="wrap base"><span>© 2026 DeployAI</span><span>AI and automation for the trades</span></div>
+  <div class="wrap base"><span>© 2026 DeployAI</span><span>AI and automation for home service businesses</span></div>
 </footer>
 <script>
   /* Botpress: in Webchat > Deploy Settings choose "Embedded", set the element ID to bp-embedded-webchat,
      then paste the bot's config "script URL" below. Leave it empty to show the built-in preview agent. */
   window.DEPLOYAI_BOTPRESS = { configUrl: "" };
 </script>
-<script src="deployai.js?v=20261026p"></script>
+<script src="deployai.js?v=20261026r"></script>
 <script src="due.js?v=20261026p"></script>
 </body>
 </html>

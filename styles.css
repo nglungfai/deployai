@@ -543,3 +543,20 @@ footer .logo .logo-svg{height:28px}
 @media (max-width:600px){.hero .mock{padding-block:0}}
 .due-table .hear{justify-self:start;margin-top:4px;font:600 12.5px var(--f-body);color:var(--navy);background:#fff;border:1.5px solid var(--navy);border-radius:999px;padding:4px 10px;cursor:pointer}
 .due-table .hear:hover{background:var(--navy);color:#fff}
+
+/* Form booking alternative */
+.cta-alt{margin-top:28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.cta-alt span{font-size:15px;color:var(--on-navy-muted)}
+
+/* Home services covered */
+.who{margin-top:72px;border-top:1px solid var(--line);padding-top:48px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,2fr);gap:48px;align-items:start}
+@media (max-width:900px){.who{grid-template-columns:1fr;gap:24px}}
+.who-head h3{font-size:clamp(22px,2.4vw,28px)}
+.who-head p{margin-top:12px;font-size:16.5px}
+.who-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px}
+@media (max-width:900px){.who-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.who-list{grid-template-columns:1fr}}
+.who-list li{display:flex;gap:10px;align-items:flex-start}
+.who-list .ic{width:18px;height:18px;flex:none;margin-top:3px;color:var(--navy);stroke-width:2.4}
+.who-list b{display:block;color:var(--ink);font-weight:600;font-size:15.5px}
+.who-list small{display:block;font-size:14px;margin-top:2px}
