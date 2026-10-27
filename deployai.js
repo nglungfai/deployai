@@ -394,12 +394,12 @@
 
   function initChat() {
     const root = $('[data-chat]'); if (!root) return;
-    const zap = $('zapier-interfaces-page-embed', root);
+    const zap = $('zapier-interfaces-chatbot-embed, zapier-interfaces-page-embed', root);
     if (zap) {
       /* Live Zapier chatbot; fall back to the built-in preview if the component never registers */
       root.classList.add('zap-live');
       const t = setTimeout(() => { root.classList.remove('zap-live'); startPreview(root); }, 8000);
-      if (window.customElements) customElements.whenDefined('zapier-interfaces-page-embed').then(() => clearTimeout(t));
+      if (window.customElements) customElements.whenDefined(zap.localName).then(() => clearTimeout(t));
       return;
     }
     initBotpress(root).then((live) => { if (!live) startPreview(root); });
