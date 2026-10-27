@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400..600&family=Figtree:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261026r">
+<link rel="stylesheet" href="styles.css?v=20261027a">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="assets/deployai-mark.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -19,6 +19,7 @@
 <meta property="og:description" content="We know who's due before they do. DeployAI scores home service businesses' customer lists, reaches the customers who are due, books the jobs and measures the lift every month.">
 <meta property="og:image" content="https://nglungfai.github.io/deployai/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
+<script type="module" src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js"></script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -209,7 +210,7 @@
       <div class="rec-card"><h4>What our CRM receives</h4><pre data-chat-record></pre><p data-chat-status>Waiting for a visitor</p></div>
     </div>
     <div class="agent">
-      <div id="bp-embedded-webchat" class="bp-slot" aria-label="DeployAI scheduling assistant"></div>
+      <zapier-interfaces-page-embed class="zap-slot" page-id="cmvq9hjqy0007gt82m6bizl6p" no-background="false" allow-query-params="true" aria-label="DeployAI scheduling assistant"></zapier-interfaces-page-embed>
       <div class="panel-card chat fallback">
         <div class="top"><svg class="chat-mark" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="4.00 -70.00 57.00 70.00"><path fill="#FFFFFF" d="M4 -29.55 15.5 -41.05V-11.5H26C38.98 -11.5 49.5 -22.02 49.5 -35C49.5 -45.85 42.14 -54.99 32.14 -57.69L41.06 -66.6C52.85 -60.97 61 -48.94 61 -35C61 -15.67 45.33 0 26 0H4V-29.55Z"/><path fill="#8EA3C7" d="M4 -70H26C28.93 -70 31.78 -69.64 34.5 -68.96L4 -38.45Z"/></svg>DeployAI scheduling assistant<span><b></b>Usually replies instantly</span></div>
         <ol data-chat-log aria-live="polite"></ol>
@@ -239,7 +240,7 @@
      then paste the bot's config "script URL" below. Leave it empty to show the built-in preview agent. */
   window.DEPLOYAI_BOTPRESS = { configUrl: "" };
 </script>
-<script src="deployai.js?v=20261026r"></script>
+<script src="deployai.js?v=20261027a"></script>
 <script src="due.js?v=20261026p"></script>
 </body>
 </html>
