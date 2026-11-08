@@ -1,22 +1,20 @@
 # DeployAI
 
-Marketing website and brand assets for **DeployAI**: AI and automation for home service businesses, set up and managed for you. DeployAI scores a business's past customers, reaches the ones who are due for service, answers when they call with AI agents, and measures the jobs it added against a holdout group.
+Marketing website and brand assets for DeployAI: behavioral models for consumer brands. DeployAI builds a behavioral model on a brand's own first-party data, deploys it into the brand's CRM and media, and measures the lift against a randomized holdout group.
 
-**Live site:** https://nglungfai.github.io/deployai/
+Live site: https://nglungfai.github.io/deployai/
 
 ## Repository layout
 
 ```
-/                     Website (served by GitHub Pages from the repo root)
-├── index.html        Home page
-├── styles.css        Site styles
-├── deployai.js       Voice call demos, Botpress embed loader
-├── due.js            "Who's due this month" scored-list demo
+/                 Website (served by GitHub Pages from the repo root)
+├── index.html    Home page
+├── styles.css    Site styles
+├── results.js    Results section: uplift chart, budget slider, hero win-back list
 ├── favicon.ico
-├── assets/           Logos, icons, social share image, demo call audio
-│   └── audio/
-├── brand/            Logo system: wordmark, mark, app icons, brand sheet (PDF/HTML)
-└── docs/             Setup notes (Botpress, brand usage)
+├── assets/       Logos, icons, social share image
+├── brand/        Logo system: wordmark, mark, app icons, brand sheet (PDF/HTML)
+└── docs/         Brand usage notes
 ```
 
 The site is plain HTML, CSS and JavaScript. There is no build step.
@@ -29,14 +27,18 @@ python3 -m http.server 8000
 
 Then open http://localhost:8000.
 
-## Connecting the Botpress scheduling agent
+## Results on the home page
 
-The booking section on the home page embeds a Botpress webchat. Until it is connected, a built-in preview of the same qualify-and-book flow runs. See [docs/botpress-setup.md](docs/botpress-setup.md).
+The win-back and prediction results come from a demo brand, Cedar & Ember Coffee: a simulated 200,000-customer coffee and brewing-gear business built so the true drivers of churn and offer response are known. Models trained on earlier weeks were scored on a later win-back campaign with a randomized 20% holdout. The numbers live in `results.js`.
+
+## Booking
+
+"Book a consultation" opens the booking form. There is no on-page chat agent.
 
 ## Deploying
 
-GitHub Pages serves the `main` branch from `/ (root)`. Any commit to `main` redeploys the site within about a minute.
+GitHub Pages serves the `main` branch from `/` (root). Any commit to `main` redeploys the site within about a minute. Bump the `?v=` cache-bust on `styles.css` and `results.js` in `index.html` when either changes.
 
 ## Brand
 
-The logo is the triangle D built into the DeployAI wordmark (set in Outfit), with a matching 45° seam on the "I". Usage rules, colors and type are in [docs/brand-guidelines.md](docs/brand-guidelines.md) and [brand/DeployAI-Brand-Logo.pdf](brand/DeployAI-Brand-Logo.pdf).
+The logo is the triangle D built into the DeployAI wordmark (set in Outfit), with a matching 45° seam on the "I". Usage rules, colors and type are in `docs/brand-guidelines.md` and `brand/DeployAI-Brand-Logo.pdf`.
